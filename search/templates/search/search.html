@@ -1,0 +1,35 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
+<!--<h1>Bạn vừa tìm: <b>{{ request.GET.q }}</b></h1>-->
+<br/><br/>
+{% for result in results %}
+<h3><a href="/{{post.id}}">{{result.title}}</a></h3>
+
+
+<img class="setting1"  src="{{result.image.url}}", width="600px", height=""/>
+<h6>Ngày đăng: {{result.date|date:"d-m-Y"}}</h6>
+<p class="gia">Giá bán: <b class="gia2"> {{result.prize}} </b></p>
+<p class="dientich">Diện tích: <b>{{result.area}}</b></p>
+<p class="huong">Hướng: <b>{{result.direc}}</b></p>
+
+
+{{result.body|safe|linebreaks}}
+
+{% endfor %}
+{% else %}
+No search results for this query
+{% endif %}
+{% endif %}
+
+{% endblock%}
+
+
+
+
+

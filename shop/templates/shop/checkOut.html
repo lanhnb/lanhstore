@@ -1,0 +1,271 @@
+{% extends 'pages/base22.html' %}
+{% block title%} Check Out page {%endblock%}
+{% block css %}
+<style>
+#popcart {
+    margin-top: 11px;
+    margin-right:10px;
+}
+.popover-body {
+    background: yellow;
+}
+button#popcart {
+    background-color: crimson;
+    padding:16px;
+    margin-top:2px;
+}
+#c_trai2 {
+    height: fit-content;
+}
+#c_fai2 {
+    height: fit-content;
+}
+#c_cot3 ,#c_cot31 {
+    display: inline-block;
+    margin-left:-4px;
+    width:100%;
+    max-height:350px;
+    }
+#c_cot3 img{
+    width:100%;
+    height:auto;}
+
+#c_cot31 img{
+    width:100%;
+    height:auto;}
+h3 {
+    color: blue;
+}
+span.carousel-control-prev-icon {
+
+    color: #fff;
+    font-size: xx-large;
+}
+
+span.carousel-control-next-icon {
+
+    color: #fff;
+    font-size: xx-large;
+
+}
+.carousel-indicators .active{
+    background-color:blue;}
+
+body .carousel-indicators li{
+background-color:blue;}
+body .carousel-control-next-icon,
+body .carousel-control-prev-icon{
+background-color:blue;}
+
+.carousel-control-next,
+.carousel-control-prev{
+top:auto; bootom:auto;}
+li#hb1{
+    margin-top: 4px;
+}
+
+li#hb2{
+    margin-top: 4px;
+}
+
+li#hb3{
+    margin-top: 4px;
+}
+ 
+li#hb4{
+    margin-top: 4px;
+}
+ 
+
+li#hb5{
+    margin-top: 4px;
+}
+.gia2{
+color:red;}
+td.td1{
+    width: 645px;
+    /* padding-right: 50px; */
+} 
+th.th1 {
+    width: 545px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    /* padding-right: 50px; */
+}
+
+td.td2{ width: 450px;
+ }
+th.th2 {
+    width: 350px;
+    /* padding-right: 50px; */
+}
+
+td.td3{
+    width: 400px;
+    /* padding-right: 50px; */
+}
+th.th3 {
+    width: 350px;
+    /* padding-right: 50px; */
+}
+th.th33 {
+    width: 650px;
+    /* padding-right: 50px; */
+}
+
+td.td4, th.th4 {
+    width: 400px;
+}
+
+tr {
+    border: 1px solid;
+}
+tr.tr2 {
+  padding-bottom: 10px;
+  padding-top: 10px;
+    background: darkgrey;
+}
+
+</style>
+{%endblock%}
+{%block checkout%}
+
+<div class="container">
+    <div class="col-md-8 mt-4">
+        <h2> Step 1 - Chi tiết giỏ hàng</h2>
+        <div my-4>
+          <table>
+            <tr class="tr2">
+              <th class="th1">Sản phẩm</th>
+              <th class="th2">Số lượng</th>
+              <th class="th3">Đơn giá</th>
+              <th class="th4">Thành tiền</th>
+            </tr>
+            </table>
+            <p id="items">
+          <table>
+            <tr class="tr2">
+              <th class="th1">Tổng:</th>
+              <th class="th2"></th>
+              <th class="th33"></th>
+              <th class="th4" id="th4"></th>
+            </tr>
+            </table>
+          
+            <!-- <ul class="list-group" id="items">
+
+            </ul> -->
+          
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mt-3">
+                    <li class="breadcrumb-item active" aria-current="page">Tổng số tiền thanh toán:  <b class="gia2"> <span  id="totalPrice"> </span>  VND;</b> Điền đủ thông tin đơn hàng dưới, Cảm ơn!</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="col-md-8 my-4">
+        <h2> Step 2 - Điền đầy đủ thông tin dưới:</h2>
+        <form method ="post" action="/shop/checkout/" class="row g-3"> {% csrf_token %}
+          <input type="hidden" name="itemsjson" id="itemsjson">
+          <input type="hidden" name="amount" id="amount">
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="name" class="form-control" id="name" name="name">
+          </div>
+
+          <div class="col-md-6">
+            <label for="Email4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+
+          <div class="col-12">
+            <label for="Address" class="form-label">Địa chỉ</label>
+            <input type="text" class="form-control" id="address" name = "address" placeholder="">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Địa chỉ 2</label>
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Tỉnh, thành phố</label>
+            <input type="text" class="form-control" id="city" name="city">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">Huyện</label>
+            <input type="text" class="form-control" id="state" name="state">
+          </div>
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="zip_code" name="zip_code">
+          </div>
+          <div class="col-md-4">
+            <label for="inputphone" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Đặt hàng</button>
+          </div>
+        </form>
+    </div>
+
+</div>
+
+{%endblock%}
+{% block js %}
+
+
+
+
+
+<script>
+if(localStorage.getItem('cart') == null){
+  var cart = {};
+
+}else{
+  cart = JSON.parse(localStorage.getItem('cart'));
+
+  }
+
+console.log(cart);
+var sum = 0;
+totalPrice = 0;
+if ($.isEmptyObject(cart)){
+  mystr = 'Giỏ hàng trống, Thực hiện mua hàng!'
+
+  $('#items').append(mystr);}
+//if is Empty
+else {
+    for (item in cart){
+    let name = cart[item][1];
+    let qty = cart[item][0];
+    let itemPrice = cart[item][2];
+    sum = sum + qty;
+    total = qty*itemPrice
+    totalPrice = totalPrice + qty * itemPrice;
+    // mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">${name}<span class="badge badge-primary-pill">${qty}</span><span>${itemPrice}</span><span>${total}</span></li>`
+   mystr=`<tr class="tr1">
+          <td class="td1">${name}</td>
+          <td class="td2">${qty}</td>
+          <td class="td3">${itemPrice}</td>
+          <td class="td4">${total}</td>
+          </tr>`
+ 
+    $('#items').append(mystr);
+    console.log(name);
+    console.log(qty);
+    }
+}
+document.getElementById('cart').innerHTML = sum;
+document.getElementById('totalPrice').innerHTML = totalPrice;
+document.getElementById('th4').innerHTML = totalPrice;
+
+$('#itemsjson').val(JSON.stringify(cart));
+{% if thank %}
+alert('Bạn đã thực hiện đặt hàng.Id đặt hàng là: {{id}}. sử dụng để xác nhận')
+localStorage.clear();
+document.location = "/shop";
+{%endif%}
+$('#amount').val($('#totalPrice').html())
+</script>
+{% endblock%}

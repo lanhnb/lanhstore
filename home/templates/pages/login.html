@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+     #bt{   background-color: #ff5e14;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border-radius:5px;
+      cursor: pointer;
+      width: 100px;}
+  .container {
+    padding: 16px;
+}
+#tk, #mk{
+width: 179px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;}
+  input#id_username {
+    width: 170px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input#id_password {
+    width: 170px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+div#frm {
+    background-color: antiquewhite;
+    width: 519px;
+    border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+
+<div id="frm" class="container">
+    <center>
+        <h2>Đăng nhập tài khoản</h2>
+
+    <form  method="post">
+        {% csrf_token %}
+        {% for key, value in form.errors.items %}
+            {{value}}
+        {% endfor %}
+
+
+
+        <p><label id="tk">Tài khoản:</label>
+           {{form.username}}</p>
+        <p><label id="mk">Mật khẩu:</label>
+            {{form.password}}</p>
+        <input id="nbt" type="hidden" name="next" value="/"/>
+        <input id="bt" type="submit" value="Đăng nhập"/>
+
+    </form>
+        </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         #bt{   background-color: #ff5e14;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border-radius:5px;
+          cursor: pointer;
+          width: 100px;}
+          label {
+    width: 179px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input#id_username {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input#id_email {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input#id_password1 {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input#id_password2 {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+div#frm {
+    background-color: antiquewhite;
+    width: 519px;
+    border-radius: 5px;
+}
+
+
+    </style>
+</head>
+<body>
+<div id="frm" class="container">
+    <center>
+        <h2>Đăng ký tài khoản</h2>
+        <form action=".", method="POST" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <input id="bt" type="submit" value="Đăng ký">
+        </form>
+    </center>
+</div>
+</body>
+</html>

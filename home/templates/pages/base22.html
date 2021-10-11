@@ -1,0 +1,487 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <meta charset="UTF-8">
+
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald|Raleway|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{% static 'vendor/bootstrap.js'%}"></script>
+    <script type="text/javascript" src="{% static 'vendor/angular.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static '1.js'%}"></script>
+<!--    <script src="{% static 'js/jquery-1.7.1.min.js'%}"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.js" integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap.css'%}">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        html, body{
+        height:100%
+        background-color: #f6f6f6
+        }
+    .sp_nut {
+    margin: 20px;
+}
+#hb1 #hb2 #hb3 #hb4 #hb5{
+    margin-top: 10px;
+}
+a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
+    font-weight: 700;
+}
+.chinhsach h4 {
+    font-weight: 700;
+}
+
+.chinhsach ul {
+    font-weight: 400;
+    color: #393742;
+}
+
+.chinhsach a {
+    color: #313538;
+}
+
+.chinhsach {
+    margin-left: 58px;
+}
+i.fas.fa-star {
+    padding: 5px;
+    font-family: 'FontAwesome';
+    font-size: 15px;
+}
+h5.my-4 {
+    background: #ff5e14;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: #fff;
+}
+    </style>
+    <style>
+        {% block css %}}
+        {%endblock%}
+    </style>
+
+      <script>
+$(document).ready(function(){
+  $("#char1").mouseenter(function(){
+    $("#ich1").attr("src","{% static 'images/khoa1.png'%}");
+    $("#char1").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+  });
+  $("#char1").mouseleave(function(){
+    $("#char1").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich1").attr("src","{% static 'images/khoa.png'%}");
+  });
+
+  $("#char2").mouseenter(function(){
+    $("#ich2").attr("src","{% static 'images/char_21.png'%}");
+    $("#char2").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+  });
+  $("#char2").mouseleave(function(){
+    $("#char2").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich2").attr("src","{% static 'images/char_2.png'%}");
+  });
+
+  $("#char3").mouseenter(function(){
+     $("#ich3").attr("src","{% static 'images/char_31.png'%}");
+    $("#char3").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+  });
+  $("#char3").mouseleave(function(){
+    $("#char3").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich3").attr("src","{% static 'images/char_3.png'%}");
+  });
+
+$("#char4").mouseenter(function(){
+    $("#ich4").attr("src","{% static 'images/sv2.png'%}");
+    $("#char4").css({"background-color": "#ff5e14", "font-size": "150%", "color": "white"});
+  });
+  $("#char4").mouseleave(function(){
+    $("#char4").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich4").attr("src","{% static 'images/sv1.png'%}");
+  });
+
+});
+
+</script>
+
+
+</head>
+<body onload="loadTime()">
+
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <ul class="list">
+                <li id="ico1"><a href="tel:0996288999" class="fa fa-phone" data-toggle="tooltip" data-placement="top" title="Gọi số: 0996288999">  (+84) 996288999</a></li>
+                <li id="ico2"><a href="mailto:lanhnb@gmail.com" class="fal fa-envelope"data-toggle="tooltip" data-placement="top" title="Gửi Email đến chúng tôi"></a></li>
+
+                 <li></li>
+                <li id="ico3"><a href="https://vi-vn.facebook.com/login/" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a></li>
+                <li id="ico4"><a href="https://zalo.me/0996288999" class="far fa-comment" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"></a></li>
+                <li id="ico5"><a href="https://www.youtube.com/" class="far fa-youtube" data-toggle="tooltip" data-placement="top" title="Tới youtube"></a></li>
+
+          </ul>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TRANG THÔNG TIN NHÀ VÀ ĐẤT</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav">
+<!--            <li> <marquee id="marque">Zalo/Facebook/Tel number: 0996288999</marquee></li>-->
+          </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                     <li id="hb1"><a id="bm1" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Blog">Blog</a></li>
+                    <li id="hb2"><a id="bm2" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Mua bán Nhà đất">Nhà đất</a></li>
+                    <li id="hb3"><a id="bm3" class="btn btn-outline-primary" href="/shop" role="button" data-toggle="tooltip" data-placement="top" title="Tới tràng Mua bán sản phẩm">Mua bán</a></li>
+                    <li id="hb4"><a id="bm4" class="btn btn-outline-primary" href="{% url 'contact' %}" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang liên hệ">Liên hệ</a></li>
+
+
+                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><img src="{% static 'images/search.png'%}" id="" style="max-height:20px;" class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></a></li>
+                   <!--Search-->
+                    <div class="search-tt" id = "frmsearch" style="display:none;">
+                          <form action="/shop/search/" class="navbar-form navbar-left" method="GET"  target="_blank" role="search">
+                            {% csrf_token %}
+                            <div class="form-group">
+                              <input autocomplete="on" class="form-control search" name="search"  id="search" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
+
+                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
+                           </div>
+                          </form>
+                    </div>
+                    <!--End Search-->
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="">Cart(<span id="cart">0</span>)</button
+
+
+                    </li>
+                <li class="dropdown">{% if user.username %}
+                  <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào: <img src="{% static 'images/user.svg'%}"class="responsive-img" style="max-height:25px; padding-left:10px; padding-right:10px; padding-top:1px;padding-bottom: 1px;">{{user.username}} </a>
+
+
+                  <ul class="dropdown-menu">
+
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'logout' %}">Đăng xuất</a></li>
+                    {% else %}
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'register' %}">Đăng ký</a></li>
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'login' %}">Đăng nhập</a></li>
+                         {% endif %}
+
+                  </ul>
+                </li>
+
+              </ul>
+
+        </div>
+      </div>
+       </div>
+    </nav><!-- /.navbar-collapse -->
+    <div class="container-fluid">
+        <img src="{% static 'images/14.jpg'%}" alt="" class="container-fluid">
+    </div>
+
+
+    <div class="row">
+            <div class="service_1">
+               <!-- Char. Item -->
+                <div id="char1" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
+
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img id="ich1" src="{% static 'images/khoa.png'%}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Bảo mật tuyệt đối</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Char. Item -->
+                <div id="char2" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
+
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img id="ich2" src="{% static 'images/char_2.png'%}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Cập nhật liên tục</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Char. Item -->
+                <div id="char3" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
+
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img id="ich3" src="{% static 'images/char_3.png'%}" alt=""></div>
+                        <div class="char_content">
+                            <div class="char_title">Chuyên nghiệp tuyệt đối</div>
+                            <div class="char_subtitle">from $50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Char. Item -->
+                <div id="char4" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
+
+                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="char_icon"><img id="ich4" src="{% static 'images/sv1.png'%}" alt=""></div>
+                            <div class="char_content">
+                                <div class="char_title">Hoàn toàn miễn phí</div>
+                                <div class="char_subtitle">from $50</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <div class="container-fluid" style="min-height:95%">
+        <div class="row">
+            <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3 char_col">
+                <div class="bs-sliderbar">
+                    <ul class="nav flex-column">
+
+                    </ul>
+                </div>
+
+        <!-- Slide1 -->
+         <div class="sileanh">
+
+            <div class="deals_title">
+                 <h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i> Sản phẩm khuyến mại</h5>
+
+                <div class="deals_slider_container">
+
+
+                    <div id="carousel-id" class="carousel slide" data-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide" alt="First slide" class="img-responsive" src="{% static 'images/deals.png'%}">
+                                <div class="deals_content">
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_category"><a href="#">Headphones</a></div>
+                                                        <div class="deals_item_price_a ml-auto">&nbsp;$300</div>
+                                                    </div>
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_name">Beoplay H7</div>
+                                                        <div class="deals_item_price ml-auto">$225</div>
+                                                    </div>
+                                                    <div class="available">
+                                                        <div class="available_line d-flex flex-row justify-content-start">
+                                                            <div class="available_title">SP còn: <span> 16</span></div>
+                                                            <div class="sold_title ml-auto">&nbsp; Đã bán: <span>8</span></div>
+                                                        </div>
+                                                        <div class="available_bar"><span style="width:17%"></span></div>
+                                                    </div>
+                                                    <div class="deals_timer d-flex flex-row align-items-center justify-content-start">
+                                                        <div class="deals_timer_title_container">
+                                                            <div class="deals_timer_title">Nhanh lên</div>
+                                                            <div class="deals_timer_subtitle">KM còn:</div>
+                                                        </div>
+                                                        <div class="deals_timer_content ml-auto">
+                                                            <div class="deals_timer_box clearfix" data-target-time="">
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer1_hr" class="deals_timer_hr"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer1_min" class="deals_timer_min"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer1_sec" class="deals_timer_sec"></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                            </div>
+                            <div class="item">
+                                <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" class="img-responsive" src="{% static 'images/webcam.png'%}">
+                                <div class="deals_content">
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_category"><a href="#">Webcam</a></div>
+                                                        <div class="deals_item_price_a ml-auto">&nbsp;VND:310</div>
+                                                    </div>
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_name">Webcam</div>
+                                                        <div class="deals_item_price ml-auto">VND:310</div>
+                                                    </div>
+                                                    <div class="available">
+                                                        <div class="available_line d-flex flex-row justify-content-start">
+                                                            <div class="available_title">SP còn: <span> 10</span></div>
+                                                            <div class="sold_title ml-auto">&nbsp;Đã bán: <span>18</span></div>
+                                                        </div>
+                                                        <div class="available_bar"><span style="width:17%"></span></div>
+                                                    </div>
+                                                    <div class="deals_timer d-flex flex-row align-items-center justify-content-start">
+                                                        <div class="deals_timer_title_container">
+                                                            <div class="deals_timer_title">Nhanh lên</div>
+                                                            <div class="deals_timer_subtitle">KM còn:</div>
+                                                        </div>
+                                                        <div class="deals_timer_content ml-auto">
+                                                            <div class="deals_timer_box clearfix" data-target-time="">
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer2_hr" class="deals_timer_hr"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer2_min" class="deals_timer_min"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer2_sec" class="deals_timer_sec"></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                            </div>
+                            <div class="item active">
+                                <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" class="img-responsive" src="{% static 'images/mouse.png'%}">
+                                <div class="deals_content">
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_category"><a href="#">Mouse</a></div>
+                                                        <div class="deals_item_price_a ml-auto">&nbsp;VND:120k</div>
+                                                    </div>
+                                                    <div class="deals_info_line d-flex flex-row justify-content-start">
+                                                        <div class="deals_item_name">Mouse</div>
+                                                        <div class="deals_item_price ml-auto">VND:120</div>
+                                                    </div>
+                                                    <div class="available">
+                                                        <div class="available_line d-flex flex-row justify-content-start">
+                                                            <div class="available_title">Sp còn: <span> 6</span></div>
+                                                            <div class="sold_title ml-auto">&nbsp;Đã bán: <span>28</span></div>
+                                                        </div>
+                                                        <div class="available_bar"><span style="width:17%"></span></div>
+                                                    </div>
+                                                    <div class="deals_timer d-flex flex-row align-items-center justify-content-start">
+                                                        <div class="deals_timer_title_container">
+                                                            <div class="deals_timer_title">Nhanh lên</div>
+                                                            <div class="deals_timer_subtitle">KM còn:</div>
+                                                        </div>
+                                                        <div class="deals_timer_content ml-auto">
+                                                            <div class="deals_timer_box clearfix" data-target-time="">
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer3_hr" class="deals_timer_hr"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer3_min" class="deals_timer_min"></div>
+
+                                                                </div>
+                                                                <div class="deals_timer_unit">
+                                                                    <div id="deals_timer3_sec" class="deals_timer_sec"></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <a id="c_trai1" class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                      <a id="c_fai1" class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Het slide1 -->
+
+            </div>
+            <div class="col-lg-9 col-xs-12 col-sm-9 col-md-9 char_col">
+<!--            <div class="col-sm-9">-->
+                <div class="container-fluid">
+                   {% block content %}
+
+                    {% endblock%}
+                    {% block shop %}
+
+                    {% endblock%}
+                    {% block order %}
+
+
+                    {% endblock%}
+                    {% block tracker %}
+                    {% endblock%}
+
+                    {% block search %}
+                    {% endblock%}
+
+                    {% block productView %}
+
+                    {% endblock%}
+                    {% block checkout %}
+
+                    {% endblock%}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+   <div class="footer" >
+
+        <div class="container-fluid">
+            <div id="" class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                <div class="chinhsach">
+                <h4>Chính sách của chúng tôi</h4>
+                <ul>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+                </div>
+            </div>
+            <div id="" class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+                <center>
+                    <a href="tel:0996288999"class="fa fa-phone" id="phone" data-toggle="tooltip" data-placement="top" title="Gọi số: 0996288999"></a>
+                   <a href="https://vi-vn.facebook.com/login/" id="face" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a>
+                    <a href="http://google.com.vn" class="fa fa-google" data-toggle="tooltip" data-placement="top" title="Tới trang Google+"></a>
+                    <a href="https://zalo.me/0996288999" class="pps-btn-img" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"> <img src="{% static 'images/zalo2.jpg'%}" alt="Liên hệ"></a>
+                   <p>Copyright © Your Website 2018 by Lanhnb: 0996288999</p>
+                <center>
+            </div>
+            <div id="" class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+{% block js %}
+
+{% endblock%}
+
+
+</body>
+</html>
