@@ -14,6 +14,7 @@ urlpatterns = [
         paginate_by=8), name='home'),
     path('<int:pk>/', views.post, name='post'),
     path('contact/', views.contact, name ='contact'),
+    path('chinhsach/', views.chinhsach, name = 'chinhsach'),
     path('register/', views.register, name = 'register'),
     path('login/', auth_views.LoginView.as_view(template_name = 'pages/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),

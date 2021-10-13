@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
-from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
+from django.template import RequestContext
+
 from .forms import CommentForm, ContactForm
 from django.http import HttpResponseRedirect, request
 from django.http import HttpResponse, BadHeaderError
@@ -41,11 +42,19 @@ def contact(request):
 
 def successView(request):
     return HttpResponse('Success! Thank you for your message.')
+def chinhsach(request):
+    return render(request, 'pages/chinhsach.html')
+
+def handler404(request, exception):
+
+    return render(request, 'pages/404.html')
 
 
-def error(request):
-    return render(request, 'pages/error.html')
-
+def handler500(request):
+    context = {}
+    response = render(request, "pages/500.html", context=context)
+    response.status_code = 500
+    return response
 
 def register(request):
     form = RegistrationForm()

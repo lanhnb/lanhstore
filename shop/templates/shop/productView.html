@@ -1,4 +1,4 @@
-{% extends 'pages/base22.html' %}
+{% extends 'pages/base23.html' %}
 {% block title%}{{product.product_name}}
 {%endblock%}
 {% block productView %}
@@ -46,6 +46,10 @@ li#hb4{
 li#hb5{
     margin-top: 4px;
 }
+.sp_nut {
+    margin-top: 20px;
+    margin-left: 100px;
+    /* left: 234px;
   
 </style>
 <div id="fb-root"></div>
@@ -81,12 +85,16 @@ li#hb5{
             <h2>{{product.product_name}}</h2>
             <p><b class="gia2">Giá:{{product.price}} VND</b></p>
               <p>{{product.product_name}}/CPU{{product.cpu}}/Ram{{product.ram}}/HD{{product.hdd}}</p>
+            <p>{{product.subcategogy}}</p>
             <div class="fb-like" data-href="http://127.0.0.1:8000/shop/{{product.product_id}}" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
 
-            <p>{{product.desc}}</p>
             <div class="fb-comments" data-href="http://127.0.0.1:8000/shop/{{product.product_id}}" data-width="" data-numposts="3"></div>
         </div>
     </div>
+</div>
+<div style="text-align: justify;" class="col-md-12">
+               {{product.desc|safe|linebreaks}}
+
 </div>
 
 {%endblock%}

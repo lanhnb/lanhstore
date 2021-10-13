@@ -69,7 +69,19 @@ h5.my-4 {
     padding-bottom: 9px;
     color: #fff;
 }
-
+#chinhsach {
+        margin: 10px 15px 0px 14px;
+        text-align: justify;
+        line-height: 35px;
+        font-size: 16px;
+        font-family: sans-serif;
+}
+#chinhsach p{
+margin-right:50px;}
+#chinhsach a {
+    font-weight: 700;
+    font-size: larger;
+}
     </style>
     <style>
         {% block css %}}
@@ -258,7 +270,7 @@ $("#char4").mouseenter(function(){
             <div class="col-lg-3 col-xs-12 col-sm-3 col-md-3 char_col">
 
 
-        <!-- Slide1 -->
+        <!-- Slide KM1 -->
          <div class="sileanh">
 
             <div class="deals_title">
@@ -425,9 +437,10 @@ $("#char4").mouseenter(function(){
                     {% block checkout %}
 
                     {% endblock%}
+                    {% block chinhsach %}
+                    {%endblock%}
 
-
-                </div>
+                    </div>
             </div>
         </div>
 

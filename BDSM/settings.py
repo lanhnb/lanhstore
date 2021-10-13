@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ue!%wr%)oes8&ti5n45fp00-9a1!+#4^-co5cuo(u#-_!l0myq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
@@ -125,9 +125,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL =  '/media/'
-MEDIA_ROOT =  os.path.join(BASE_DIR,'media')
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),'/BDSM/home/static' ]
 
+if DEBUG:
+
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),'/BDSM/home/static']
+
+else:
+
+    STATIC_ROOT = [os.path.join(BASE_DIR, 'static'), '/BDSM/home/static']
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
