@@ -515,7 +515,7 @@ $("#char4").mouseenter(function(){
                         <p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{post.prize}}</span> VNĐ </b></p>
                         <p class="dientich">Diện tích: <b>{{post.area}}</b></p>
                         <p class="huong">Hướng: <b>{{post.direc}}</b></p>
-                       <p>{{post.body|safe|linebreaks|truncatewords:290}} <a href="/{{post.id}}"> xem tiếp</a> </p>
+                       <p>{{post.body|safe|linebreaks|truncatewords:150}} <a href="/{{post.id}}"> xem tiếp</a> </p>
                         <p><br></p>
                     <script>
                           ( function() {
@@ -543,7 +543,7 @@ $("#char4").mouseenter(function(){
 
 
                 </div>
-
+              </div>
 
                     {% for post in Posts|slice:"1:" %}
                         <div id="b1" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
@@ -558,11 +558,8 @@ $("#char4").mouseenter(function(){
                             <!-- <p>{{post.body|linebreaks}}</p> -->
                         </div>
                     {% endfor %}
-
-</div>
-
-    </div>
-      </div>
+            </div>
+        </div>
 
 
           <div class="tieptheo">
@@ -578,6 +575,11 @@ $("#char4").mouseenter(function(){
 
             </div>
       </div>
+    </div>
+    </div
+    </div>        
+    </div>
+                    >
 
 
 
