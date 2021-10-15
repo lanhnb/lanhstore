@@ -126,13 +126,17 @@ h5.my-4 {
     padding-bottom: 9px;
     color: #fff;
 }
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
 
 </style>
 {%endblock%}
 {% block title %}Shop{% endblock %}
 {% load static %}
 {% block shop %}
-
+<html lang="es">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1561521837271142&autoLogAppEvents=1" nonce="4ZrRzg8K"></script>
 <div class="container-fluid">
@@ -155,7 +159,7 @@ h5.my-4 {
                             <a href="/shop/products/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
-                                <h6 class="card-title" ><b class="gia2">Giá: <span id="pricepr{{i.id}}">{{i.price}} VND </span></b></h6>
+                                <h6 class="card-title" ><b class="gia2">Giá: <span class="myDIV" id="pricepr{{i.id}}">{{i.price}}</span> VNĐ</b></h6>
 
 <!--                                <div class="fb-like" data-href="http://127.0.0.1:8000/shop/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>-->
 <!--                                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>-->
@@ -202,7 +206,8 @@ h5.my-4 {
 
                     <img id="setting111" src="{{j.image.url}}" class="img-fluid" alt="Responsive image">
 <!--                        <p>Ngày: {{j.pub_date}}</p>-->
-                        <p><b class="gia2">Giá: {{j.price}} VND</b></p>
+<p></p>
+<p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.price}}</span> VNĐ</b></p>
                         <br>
                         {%endfor%}
 {%endfor%}
@@ -212,8 +217,15 @@ h5.my-4 {
 {% block js %}
 
 <script>
-
-
+//tach so 1000
+let x = document.querySelectorAll(".myDIV");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        };
+//Het tach
 if(localStorage.getItem('cart') == null){
   var cart = {};
 

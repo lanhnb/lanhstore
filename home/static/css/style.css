@@ -283,7 +283,8 @@ form.navbar-form navbar-left button{
 
     }
 #b9:hover{ background: var(--overlay-color); 
-  color: #fff; } 
+  color: #fff; }
+
 #bm1:hover{
   
   color: #fff; 
@@ -434,6 +435,7 @@ a{
 .tieptheo {
     margin-left: 400px;
 }
+
 
 .col-sm-8 {
     /*margin-right: 7px;*/

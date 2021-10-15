@@ -56,8 +56,20 @@ h5.my-4 {
     padding-bottom: 9px;
     color: #fff;
 }
-
-
+#b9 i.fas.fa-user {
+    font-family: 'FontAwesome';
+    font-size: 26px;
+    padding: 5px 13px 5px 12px;
+}
+#hb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+}
+#hb5 i.fas.fa-search:hover{color:#fff;}
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
        </style>
     <script>
 $(document).ready(function(){
@@ -142,13 +154,13 @@ $("#char4").mouseenter(function(){
           </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="hb1"><a id="bm1" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Blog">Blog</a></li>
+
                     <li id="hb2"><a id="bm2" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Mua bán Nhà đất">Nhà đất</a></li>
                     <li id="hb3"><a id="bm3" class="btn btn-outline-primary" href="/shop" role="button" data-toggle="tooltip" data-placement="top" title="Tới tràng Mua bán sản phẩm">Mua bán</a></li>
                     <li id="hb4"><a id="bm4" class="btn btn-outline-primary" href="{% url 'contact' %}" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang liên hệ">Liên hệ</a></li>
 
 
-                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><img src="{% static 'images/search.png'%}" id="" style="max-height:20px;" class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></a></li>
+                    <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
                     <!--Search-->
                     <div class="search-tt" id = "search" style="display:none;">
                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
@@ -163,7 +175,7 @@ $("#char4").mouseenter(function(){
                     <!--End Search-->
 
                 <li class="dropdown">{% if user.username %}
-                  <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào: <img src="{% static 'images/user.svg'%}"class="responsive-img" style="max-height:25px; padding-left:10px; padding-right:10px; padding-top:1px;padding-bottom: 1px;">{{user.username}} </a>
+                  <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào:<i class="fas fa-user"></i>{{user.username}} </a>
 
 
                   <ul class="dropdown-menu">
@@ -319,7 +331,7 @@ $("#char4").mouseenter(function(){
 
                     <img id="setting111" class="" src="{{j.image.url}}" class="img-fluid" alt="Responsive image" >
                     <p><br></p>
-                    <p class="gia">Giá bán: <b class="gia2"> {{j.prize}} VND </b></p>
+                    <p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{j.prize}}</span> VNĐ </b></p>
                     <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
                     <p class="huong">Hướng: <b>{{j.direc}}</b></p>
 
@@ -493,12 +505,14 @@ $("#char4").mouseenter(function(){
                     {% for post in Posts|slice:":1" %}
                     <p><h4><a href="/{{post.id}}">{{post.title}}</a></h4><i>Ngày đăng: {{post.date|date:"d-m-Y"}}</i></p>
 
+
+                        <img id="{{post}}" class="setting1" src="{{post.image.url}}" with-max="500px" height="300px" alt="">
+
+                        <p><br></p>
+
                     <div class="fb-like" data-href="http://127.0.0.1:8000/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
 
-
-                        <img id="{{post}}" class="setting122" src="{{post.image.url}}" width="500px" height="300px" alt="">
-                        <p><br></p>
-                        <p class="gia">Giá bán: <b class="gia2"> {{post.prize}} VND </b></p>
+                        <p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{post.prize}}</span> VNĐ </b></p>
                         <p class="dientich">Diện tích: <b>{{post.area}}</b></p>
                         <p class="huong">Hướng: <b>{{post.direc}}</b></p>
                        <p>{{post.body|safe|linebreaks|truncatewords:290}} <a href="/{{post.id}}"> xem tiếp</a> </p>
@@ -538,7 +552,7 @@ $("#char4").mouseenter(function(){
 
                             <p><h4><a href="/{{post.id}}">{{post.title}}</a></h4><i>Ngày đăng: {{post.date|date:"d-m-Y"}}</i></p>
                             <div class="fb-like" data-href="http://127.0.0.1:8000/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
-                            <p class="gia">Giá bán: <b class="gia2"> {{post.prize}} VND </b></p>
+                            <p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{post.prize}}</span> VNĐ </b></p>
                             <p class="dientich">Diện tích: <b>{{post.area}}</b></p>
                             <p class="huong">Hướng: <b>{{post.direc}}</b></p>
                             <!-- <p>{{post.body|linebreaks}}</p> -->
@@ -548,6 +562,7 @@ $("#char4").mouseenter(function(){
 </div>
 
     </div>
+      </div>
 
 
           <div class="tieptheo">
@@ -588,11 +603,18 @@ $("#char4").mouseenter(function(){
                    <a href="https://vi-vn.facebook.com/login/" id="face" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a>
                     <a href="http://google.com.vn" class="fa fa-google" data-toggle="tooltip" data-placement="top" title="Tới trang Google+"></a>
                     <a href="https://zalo.me/0996288999" class="pps-btn-img" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"> <img src="{% static 'images/zalo2.jpg'%}" alt="Liên hệ"></a>
-                   <p>Copyright © Your Website 2018 by Lanhnb: 0996288999</p>
+                   <p>Copyright © Your Website 2018 by Lanhnb</p>
                 <center>
             </div>
             <div id="" class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
-
+                 <div class="chinhsach">
+                <h4>Địa chỉ giao dịch</h4>
+                <ul>
+                    <li><a href="#">Số 98 đường 477, Tt Me, Gia Viễn, Ninh Bình</a></li>
+                    <li><a href="tel:0996288999">Mobile: 0996288999</a></li>
+                    <li><a href="mailto:lanhnb@gmail.com">Email: lanhnb@gmail.com</a></li>
+                </ul>
+                </div>
             </div>
 
 
@@ -600,5 +622,17 @@ $("#char4").mouseenter(function(){
 
         </div>
     </div>
+<script>
+    //tach so 1000
+let x = document.querySelectorAll(".myDIV");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        };
+//Het tach
+
+</script>
 </body>
 </html>

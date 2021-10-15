@@ -126,6 +126,10 @@ i.fas.fa-star {
     font-family: 'FontAwesome';
     font-size: 15px;
 }
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
 
 {% endblock %}
 
@@ -185,7 +189,7 @@ i.fas.fa-star {
 
 {%if msg|length != 0 %}
 alert('{{msg}}');
-window.location.href="/"
+window.location.href="/shop"
 {%endif%}
 // Find out the cart items from localStorage
 if (localStorage.getItem('cart') == null) {

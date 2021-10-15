@@ -125,12 +125,16 @@ tr.tr2 {
   padding-top: 10px;
     background: darkgrey;
 }
-
+#hb5 i.fas.fa-search:hover{color:#fff;}
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
 </style>
 {%endblock%}
 {%block checkout%}
 
-<div class="container">
+<div class="container-fluid">
     <div class="col-md-8 mt-4">
         <h2> Step 1 - Chi tiết giỏ hàng</h2>
         <div my-4>
@@ -158,7 +162,7 @@ tr.tr2 {
           
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mt-3">
-                    <li class="breadcrumb-item active" aria-current="page">Tổng số tiền thanh toán:  <b class="gia2"> <span  id="totalPrice"> </span>  VND;</b> Điền đủ thông tin đơn hàng dưới, Cảm ơn!</li>
+                    <li class="breadcrumb-item active" aria-current="page">Tổng số tiền thanh toán:  <b class="gia2"> <span id="totalPrice"> </span>  VND;</b> Điền đủ thông tin đơn hàng dưới, Cảm ơn!</li>
                 </ol>
             </nav>
         </div>
@@ -257,8 +261,9 @@ else {
     }
 }
 document.getElementById('cart').innerHTML = sum;
-document.getElementById('totalPrice').innerHTML = totalPrice;
-document.getElementById('th4').innerHTML = totalPrice;
+document.getElementById('totalPrice').innerHTML = totalPrice.toLocaleString();
+document.getElementById('th4').innerHTML = totalPrice.toLocaleString();
+
 
 $('#itemsjson').val(JSON.stringify(cart));
 {% if thank %}

@@ -9,7 +9,7 @@
 <h3><a href="{% url 'post' post.id %}">{{post.title}}</a></h3>
 <img id="image" class="setting1" src="{{post.image.url}}" width="500px" height="300px" alt="">
 <h5><i>Ngày đăng: {{post.date|date:"d-m-Y"}}</i></h5>
-<p class="gia">Giá bán: <b class="gia2"> {{post.prize}} </b></p>
+<p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{post.prize}}</span> VNĐ </b></p>
 <p class="dientich">Diện tích: <b>{{post.area}}</b></p>
 <p class="huong">Hướng: <b>{{post.direc}}</b></p>
 <div class="fb-like" data-href="http://127.0.0.1:8000/{{post.id}}/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
@@ -50,4 +50,17 @@
     </form>
 {% endif %}
 </div>
+<script>
+    //tach so 1000
+let x = document.querySelectorAll(".myDIV");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        };
+//Het tach
+
+</script>
 {% endblock%}
+

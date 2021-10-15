@@ -35,12 +35,12 @@ def productView(request, myid):
 
 def tracker(request):
     if request.method == "POST":
-        orderid = request.POST.get('orderid', '')
+        orderId = request.POST.get('orderId', '')
         email = request.POST.get('email', '')
         try:
-            order = Orders.objects.filter(orderid=orderid, email=email)
+            order = Orders.objects.filter(orderid=orderId, email=email)
             if len(order) > 0:
-                update = UpdateOrder.objects.filter(orderid=orderid)
+                update = UpdateOrder.objects.filter(orderid=orderId)
                 updates = []
                 for item in update:
                     updates.append({'text': item.update_desc, 'time': item.timestamp})
@@ -96,5 +96,5 @@ def search(request):
             allProds.append([prod, range(1, nSlides), nSlides])
     params = {'allProds': allProds, "msg":""}
     if len(allProds)==0 or len(query)<4:
-        params={'msg':"Please make sure to enter relevant search query"}
+        params={'msg':"Nhập thông tin cần tìm chưa đúng, Mời nhập lại"}
     return render(request, 'shop/search.html', params)
