@@ -1,0 +1,298 @@
+{% extends 'pages/basehome.html' %}
+{% block css %}
+<style xmlns="http://www.w3.org/1999/html">
+.carousel-indicators .active {
+background-color: #ff5e14;
+}
+.col-md-3 img{
+width: 120;px
+height: 200px;
+}
+body .carousel-indicator li{
+
+background-color: #ff5e14;
+}
+body .carousel-indicators{
+bottom: -25px;
+}
+.carousel-indicators li{
+    background-color: #ff5e14;
+}
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon{
+background-color: #ff5e14;
+}
+.carousel-control-prev,
+.carousel-control-next{
+top: auto;
+bottom: auto;
+<!--padding-top: 222px;-->
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+
+
+#c_trai2 {
+    height: fit-content;
+}
+#c_fai2 {
+    height: fit-content;
+}
+#c_cot3 ,#c_cot31 {
+    display: inline-block;
+    margin-left:-4px;
+    width:100%;
+    max-height:350px;
+    }
+#c_cot3 img{
+    border-radius: 5px;
+    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+    transition: width 1s, height 2s;
+    width:100%;
+    height:auto;}
+#c_cot3 img:hover{ opacity: 0.8; width: 110%; height: 110%;}
+
+#c_cot31 img{
+    width:100%;
+    height:auto;}
+h3 {
+    color: blue;
+}
+.btn-primary {
+  background-color: #ff5e14;
+}
+
+
+li#hb1{
+    margin-top: 4px;
+}
+
+li#hb2{
+    margin-top: 4px;
+}
+
+li#hb3{
+    margin-top: 4px;
+}
+
+li#hb4{
+    margin-top: 4px;
+}
+
+
+li#hb5{
+    margin-top: 4px;
+}
+a#cr_trai {
+    margin-top: -41px;
+    margin-left: 150px;
+}
+
+a#cr_fai {
+    margin-top: -41px;
+    margin-right:150px;
+}
+
+a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
+    font-weight: 700;
+}
+a#b9 {
+    margin-top: 2px;
+    padding-bottom: 12px;
+}
+i.fas.fa-star {
+    padding: 5px;
+    font-family: 'FontAwesome';
+    font-size: 15px;
+}
+h5.my-4 {
+    background: #ff5e14;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: #fff;
+}
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
+
+</style>
+{%endblock%}
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block content1 %}
+
+{% for product, range, nSlides in allProds %}
+
+
+                        {% for j in product|slice:"5:6"%}
+
+                    <p><a href="/posts/{{j.id}}">{{j.title}}</a></p>
+
+                    <img id="setting1"  src="{{j.image.url}}" class="img-fluid" alt="Responsive image">
+<!--                        <p>Ngày: {{j.pub_date}}</p>-->
+                    <p></p>
+                        <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.prize}}</span> VNĐ</b></p>
+                        <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
+                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
+                       <p>{{j.body|safe|linebreaks|truncatewords:150}} </p><a href="/"></a><a href="/posts/{{j.id}}"> xem tiếp</a>
+                        <p><br></p>
+                    <script>
+                          ( function() {
+                          'use strict';
+                           var count = 0;
+                           var pic = document.getElementById( 'setting1' );
+                               pic.addEventListener( 'click',
+                                function() {
+                                  count ++;
+                                  if ( count === 3 ) {
+                                       pic.classList.remove( 'setting' + count )
+                                       count = 0;
+                                    }
+
+                                       pic.classList.remove( 'setting' + count );
+                                       pic.classList.add( 'setting' + ( count + 1 )  );
+
+                                }, false );
+                         }( document ));
+                    </script>
+                        <br>
+                    {%endfor%}
+
+{%endfor%}
+
+{%endblock%}
+
+
+{% block content2 %}
+<div id="c_cot3">
+{% for product, range, nSlides in allProds %}
+
+
+                        {% for j in product|slice:"4:7"%}
+
+                        <p><a href="/posts/{{j.id}}"> {{j.title}}</a></p>
+
+                    <a href="/posts/{{j.id}}"><img id="setting1"  src="{{j.image.url}}" class="img-fluid" alt="Responsive image"></a>
+<!--                        <p>Ngày: {{j.pub_date}}</p>-->
+                    <p></p>
+                        <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.prize}}</span> VNĐ</b></p>
+                        <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
+                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
+<!--                       <p>{{j.body|safe|linebreaks|truncatewords:5}} <a href="/{{post.id}}"> xem tiếp</a> </p>-->
+                        <p><br></p>
+
+{%endfor%}
+
+{%endfor%}
+    </div>
+{%endblock%}
+
+
+
+{% block content %}
+<html lang="es">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1561521837271142&autoLogAppEvents=1" nonce="4ZrRzg8K"></script>
+<div class="container-fluid">
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+    <h5 class="my-4"><i class="fas fa-star"></i> Bài viết đăng: {{product.0.categogy}}</h5>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div id="c_cot3" class="col-xs-12 col-sm-3 col-md-3">
+                        <div class="card" style="width:18em;">
+                            <a href="/posts/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/posts/{{i.id}}"> {{i.title}}</a></h5>
+                                <h6 class="card-title" ><b class="gia2">Giá: <span class="myDIV">{{i.prize}}</span> VNĐ</b></h6>
+                                <p class="dientich">Diện tích: <b>{{i.area}}</b></p>
+                                <p class="huong">Hướng: <b>{{i.direc}}</b></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a id="cr_trai" class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span  class="carousel-control-prev-icon"></span>
+        </a>
+        <a id="cr_fai" class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+
+
+{%block spkm%}
+<h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Sản phẩm hots trong tuần</h5>
+
+{% for product, range, nSlides in allProds %}
+
+
+                        {% for j in product|slice:"4:5"%}
+                    <p><a href="/posts/{{j.id}}">{{j.title}}</a></p>
+
+                   <a href="/posts/{{j.id}}"> <img id="setting111" src="{{j.image.url}}" class="img-fluid" alt="Responsive image"></a>
+<!--                        <p>Ngày: {{j.pub_date}}</p>-->
+<p></p>
+<p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.price}}</span> VNĐ</b></p>
+ <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
+                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
+
+                        {%endfor%}
+{%endfor%}
+
+{%endblock%}
+
+{% block js %}
+
+<script>
+//tach so 1000
+let x = document.querySelectorAll(".myDIV");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        };
+//Het tach
+</script>
+{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+

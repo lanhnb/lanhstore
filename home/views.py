@@ -7,26 +7,40 @@ from django.http import HttpResponseRedirect, request
 from django.http import HttpResponse, BadHeaderError
 from .forms import RegistrationForm
 from django.http import HttpResponseRedirect
-from .models import Post, Contact
+from .models import Post, Contact, KM
+from math import ceil
 
 import home
+def khuyenmai(request):
+    km = KM.objects.all()
+    return render(request, 'pages/home2.html',{'km':km})
 
-
+def index(request):
+    allProds = []
+    catprods = Post.objects.values('categogy', 'id')
+    cats = {item['categogy'] for item in catprods}
+    for cat in cats:
+        prod = Post.objects.filter(categogy=cat)
+        n = len(prod)
+        nSlides = n // 4 + ceil((n / 4) - (n // 4))
+        allProds.append([prod, range(1, nSlides), nSlides])
+    params = {'allProds': allProds}
+    return render(request, 'pages/home2.html', params)
 
 
 
 
 
 # Create your views here.
-def post(request, pk):
-    post = get_object_or_404( Post, pk=pk )
+def post(request, myid):
+    post = Post.objects.filter(id=myid)
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm( request.POST, author=request.user, post=post )
         if form.is_valid():
             form.save()
             return HttpResponseRedirect( request.path )
-    return render( request, "pages/post.html", {"post": post, "form": form} )
+    return render( request, "pages/post.html", {"post": post[0], "form": form} )
 
 def contact(request):
     if request.method == "POST":

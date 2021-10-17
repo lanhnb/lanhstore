@@ -545,7 +545,7 @@ $("#char4").mouseenter(function(){
                 </div>
               </div>
 
-                    {% for post in Posts|slice:"1:" %}
+                    {% for post in Posts|slice:"1:4" %}
                         <div id="b1" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
 
                             <a href="/{{post.id}}"> <img id="b3" href="/{{post.id}}" src="{{post.image.url}}" class="img-fluid" alt="Responsive image"></a>
@@ -575,9 +575,58 @@ $("#char4").mouseenter(function(){
 
             </div>
       </div>
+    <div class=""
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+    <h5 class="my-4"><i class="fas fa-star"></i>  {{product.0.categogy}}</h5>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div id="c_cot3" class="col-xs-6 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width:15em;">
+                            <a href="/shop/products/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                <h6 class="card-title" ><b class="gia2">Giá: <span class="myDIV" id="pricepr{{i.id}}">{{i.price}}</span> VNĐ</b></h6>
+
+<!--                                <div class="fb-like" data-href="http://127.0.0.1:8000/shop/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>-->
+<!--                                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>-->
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-primary cart">Đặt mua</button>
+                                </span>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">Chi tiết</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a id="cr_trai" class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span  class="carousel-control-prev-icon"></span>
+        </a>
+        <a id="cr_fai" class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    {% endfor %}
+</div>
     </div>
     </div
-    </div>        
+    </div>
     </div>
                     >
 

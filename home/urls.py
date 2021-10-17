@@ -7,12 +7,9 @@ from django.views.generic import ListView, DetailView
 
 
 urlpatterns = [
-    path('', ListView.as_view(
-        queryset=Post.objects.all().order_by('-date'),
-        template_name='pages/home.html',
-        context_object_name='Posts',
-        paginate_by=8), name='home'),
-    path('<int:pk>/', views.post, name='post'),
+    path('', views.index, name = 'homeHome'),
+    path('posts/<int:myid>', views.post, name='post'),
+    path('km',views.khuyenmai, name ='km'),
     path('contact/', views.contact, name ='contact'),
     path('chinhsach/', views.chinhsach, name = 'chinhsach'),
     path('register/', views.register, name = 'register'),

@@ -33,3 +33,14 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+
+class KM(models.Model):
+    name = models.CharField(max_length=100)
+    image =models.ImageField(null=True)
+    gia =models.IntegerField(default=0)
+    giacu =models.IntegerField(default=0)
+    soluong=models.IntegerField(default=0)
+    soconlai=models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
