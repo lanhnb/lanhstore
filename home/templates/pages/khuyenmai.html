@@ -19,41 +19,28 @@
 <!--    <script src="{% static 'js/jquery-1.7.1.min.js'%}"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.js" integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
     <link rel="stylesheet" href="{% static 'vendor/bootstrap.css'%}">
     <title>{% block title %}{% endblock %}</title>
-<style>
-html, body{
-    height:100%
-    background-color: #f6f6f6
-}
-
-#hb1 #hb2 #hb3 #hb4 #hb5{
+    <style>
+        html, body{
+        height:100%
+        background-color: #f6f6f6
+        }
+        #hb1 #hb2 #hb3 #hb4 #hb5{
     margin-top: 10px;
 }
 a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
     font-weight: 700;
 }
-.chinhsach h4 {
-    font-weight: 700;
-}
 
-.chinhsach ul {
-    font-weight: 400;
-    color: #393742;
-}
 
-.chinhsach a {
-    color: #313538;
-}
 
-.chinhsach {
-    margin-left: 58px;
-}
+
 i.fas.fa-star {
     padding: 5px;
     font-family: 'FontAwesome';
@@ -75,55 +62,14 @@ h5.my-4 {
     font-size: 20px;
 }
 #hb5 i.fas.fa-search:hover{color:#fff;}
+.km {
+    margin-top: 20px;
+}
+b.gia1 {
+    text-decoration: line-through;
+}
 
-</style>
-
-{% block css %}}
-{%endblock%}
-
-
-      <script>
-$(document).ready(function(){
-  $("#char1").mouseenter(function(){
-    $("#ich1").attr("src","{% static 'images/khoa1.png'%}");
-    $("#char1").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
-  });
-  $("#char1").mouseleave(function(){
-    $("#char1").css({"background-color": "white", "font-size": "100%","color": "black"});
-    $("#ich1").attr("src","{% static 'images/khoa.png'%}");
-  });
-
-  $("#char2").mouseenter(function(){
-    $("#ich2").attr("src","{% static 'images/char_21.png'%}");
-    $("#char2").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
-  });
-  $("#char2").mouseleave(function(){
-    $("#char2").css({"background-color": "white", "font-size": "100%","color": "black"});
-    $("#ich2").attr("src","{% static 'images/char_2.png'%}");
-  });
-
-  $("#char3").mouseenter(function(){
-     $("#ich3").attr("src","{% static 'images/char_31.png'%}");
-    $("#char3").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
-  });
-  $("#char3").mouseleave(function(){
-    $("#char3").css({"background-color": "white", "font-size": "100%","color": "black"});
-    $("#ich3").attr("src","{% static 'images/char_3.png'%}");
-  });
-
-$("#char4").mouseenter(function(){
-    $("#ich4").attr("src","{% static 'images/sv2.png'%}");
-    $("#char4").css({"background-color": "#ff5e14", "font-size": "150%", "color": "white"});
-  });
-  $("#char4").mouseleave(function(){
-    $("#char4").css({"background-color": "white", "font-size": "100%","color": "black"});
-    $("#ich4").attr("src","{% static 'images/sv1.png'%}");
-  });
-
-});
-
-</script>
-
+    </style>
 
 </head>
 <body onload="loadTime()">
@@ -168,23 +114,19 @@ $("#char4").mouseenter(function(){
 
 
                 <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
-                   <!--Search-->
+                      <!--Search-->
                     <div class="search-tt" id = "frmsearch" style="display:none;">
-                          <form action="/shop/search/" class="navbar-form navbar-left" method="GET"  target="_blank" role="search">
+                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
                             {% csrf_token %}
                             <div class="form-group">
-                              <input autocomplete="on" class="form-control search" name="search"  id="search" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
+                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
 
                             <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
                            </div>
                           </form>
                     </div>
                     <!--End Search-->
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="">Cart(<span id="cart">0</span>)</button
 
-
-                    </li>
                 <li class="dropdown">{% if user.username %}
                   <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào:<i class="fas fa-user"></i>{{user.username}} </a>
 
@@ -206,90 +148,36 @@ $("#char4").mouseenter(function(){
       </div>
        </div>
     </nav><!-- /.navbar-collapse -->
-    <div class="container-fluid">
-        <img src="{% static 'images/14.jpg'%}" alt="" class="container-fluid">
-    </div>
-
-
-    <div class="row">
-            <div class="service_1">
-               <!-- Char. Item -->
-                <div id="char1" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
-
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich1" src="{% static 'images/khoa.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Bảo mật tuyệt đối</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Char. Item -->
-                <div id="char2" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
-
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich2" src="{% static 'images/char_2.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Cập nhật liên tục</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Char. Item -->
-                <div id="char3" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
-
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich3" src="{% static 'images/char_3.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Chuyên nghiệp tuyệt đối</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Char. Item -->
-                <div id="char4" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
-
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich4" src="{% static 'images/sv1.png'%}" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Hoàn toàn miễn phí</div>
-                                <div class="char_subtitle"></div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-
-
-
+<br>
+    <div class="container-fluid" style="min-height:95%">
         <div class="row">
-       <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 char_col">
-            <div class="container-fluid">
+            <div class="km">
+            <h5 class="my-4"><i class="fas fa-star"></i>Phụ kiện</h5>
+            {%for m in km %}
+            <div class="col-lg-4 col-xs-6 col-sm-4 col-md-4 char_col">
+                 <p><a href="/">{{m.name}}</a></p>
 
+                    <img id="setting1"  src="{{m.image.url}}" class="img-fluid" alt="Responsive image">
 
-
-                    {% block productView %}
-
-                    {% endblock%}
-
-                </div>
+                    <p></p>
+                        <p class=""><b class="gia2">Giá mới: <span class="myDIV">{{m.gia}}</span> VNĐ</b></p>
+                        <p class=""><b class="gia1">Giá cũ: <span class="myDIV">{{m.giacu}}</span> VNĐ</b></p>
+                      <p>{{m.soluong|safe|linebreaks|truncatewords:150}} </p><a href="/"></a>
             </div>
+            {%endfor%}
         </div>
-
     </div>
+        </div>
+<br>
 
-   <div class="footer" >
+    <div class="footer" >
 
         <div class="container-fluid">
             <div id="" class="col-lg-4 col-xs-12 col-sm-4 col-md-4">
                 <div class="chinhsach">
                 <h4>Chính sách của chúng tôi</h4>
                 <ul>
-                   <li><a href="/chinhsach">Chính sách bảo hành</a></li>
+                    <li><a href="/chinhsach">Chính sách bảo hành</a></li>
                     <li><a href="/chinhsach">Chính sách đổi trả</a></li>
                     <li><a href="/chinhsach">Chính sách bảo mật</a></li>
                 </ul>
@@ -308,7 +196,7 @@ $("#char4").mouseenter(function(){
                  <div class="chinhsach">
                 <h4>Địa chỉ giao dịch</h4>
                 <ul>
-                   <li><a href="#">Số 98 đường 477, Tt Me, Gia Viễn, Ninh Bình</a></li>
+                    <li><a href="#">Số 98 đường 477, Tt Me, Gia Viễn, Ninh Bình</a></li>
                     <li><a href="tel:0996288999">Mobile: 0996288999</a></li>
                     <li><a href="mailto:lanhnb@gmail.com">Email: lanhnb@gmail.com</a></li>
                 </ul>
@@ -320,10 +208,16 @@ $("#char4").mouseenter(function(){
 
         </div>
     </div>
-{% block js %}
-
-{% endblock%}
-
-
+<script>
+//tach so 1000
+let x = document.querySelectorAll(".myDIV");
+        for (let i = 0, len = x.length; i < len; i++) {
+            let num = Number(x[i].innerHTML)
+                      .toLocaleString('en');
+            x[i].innerHTML = num;
+            x[i].classList.add("currSign");
+        };
+//Het tach
+</script>
 </body>
 </html>

@@ -39,7 +39,7 @@ class KM(models.Model):
     image =models.ImageField(null=True)
     gia =models.IntegerField(default=0)
     giacu =models.IntegerField(default=0)
-    soluong=models.IntegerField(default=0)
+    soluong=models.CharField(max_length=5000)
     soconlai=models.IntegerField(default=0)
 
     def __str__(self):

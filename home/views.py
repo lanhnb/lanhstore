@@ -13,7 +13,7 @@ from math import ceil
 import home
 def khuyenmai(request):
     km = KM.objects.all()
-    return render(request, 'pages/home2.html',{'km':km})
+    return render(request, 'pages/khuyenmai.html',{'km':km})
 
 def index(request):
     allProds = []
