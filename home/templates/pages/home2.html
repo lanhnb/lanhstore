@@ -120,6 +120,10 @@ h5.my-4 {
 #breadcrumb li {
     display: inline;
 }
+div#breadcrumb a {
+    color: #ff5e14;
+    font-style: italic;
+}
 
 </style>
 {%endblock%}
@@ -181,7 +185,7 @@ h5.my-4 {
 {% for product, range, nSlides in allProds %}
 
 
-                        {% for j in product|slice:"3:5"%}
+                        {% for j in product|slice:"1:2"%}
 
                         <p><a href="/posts/{{j.id}}">Cần {{j.categogy}} {{j.title}}</a></p>
                         <p>Ngày đăng: {{j.date|date:"d-m-Y"}}</p>
@@ -218,11 +222,11 @@ h5.my-4 {
                 <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
                 {% endfor %}
             </ul>
-            <div class="container carousel-inner no-padding">
+            <div class="container-fluid">
                 <div class="carousel-item active">
                     {% for i in product %}
-                    <div id="c_cot3" class="col-xs-12 col-sm-3 col-md-3">
-                        <div class="card" style="width:18em;">
+                    <div id="c_cot3" class="col-xs-6 col-sm-6 col-md-3">
+                        <div class="card" style="width:16em;">
                             <a href="/posts/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/posts/{{i.id}}">Cần {{i.categogy}} {{i.title}}</a></h5>
@@ -262,7 +266,7 @@ h5.my-4 {
 {%block spkm%}
 <h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Sản phẩm hots trong tuần</h5>
 
-{% for j, range, nSlides in allProds|slice:"1:2" %}
+{% for j, range, nSlides in allProds|slice:"3:4" %}
 
 
 
