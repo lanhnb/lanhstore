@@ -117,6 +117,9 @@ h5.my-4 {
     margin: 0px;
     padding: 0px;
 }
+#breadcrumb li {
+    display: inline;
+}
 
 </style>
 {%endblock%}
@@ -125,20 +128,26 @@ h5.my-4 {
 
 {% block content1 %}
 
-{% for product, range, nSlides in allProds %}
+{% for j, range, nSlides in allProds|slice:":1" %}
+<div id="breadcrumb">
+<ul class="bread">
+    <li><a href="/">Home</a></li>
+    <li><a href="/">/ {{j.0.categogy}}</a></li>
+
+    <li><a href="/{{j.0.id}}">/ {{j.0.title}}</a></li>
+</ul>
+</div>
 
 
-                        {% for j in product|slice:"5:6"%}
+                    <h4><a href="/posts/{{j.0.id}}">Cần {{j.0.categogy}} {{j.0.title}}</a></h4>
+                        <p>Ngày đăng: {{j.0.date|date:"d-m-Y"}}</p>
+                    <img id="setting1"  src="{{j.0.image.url}}" class="img-fluid" alt="Responsive image">
 
-                    <p><a href="/posts/{{j.id}}">{{j.title}}</a></p>
-
-                    <img id="setting1"  src="{{j.image.url}}" class="img-fluid" alt="Responsive image">
-<!--                        <p>Ngày: {{j.pub_date}}</p>-->
                     <p></p>
-                        <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.prize}}</span> VNĐ</b></p>
-                        <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
-                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
-                       <p>{{j.body|safe|linebreaks|truncatewords:150}} </p><a href="/"></a><a href="/posts/{{j.id}}"> xem tiếp</a>
+                        <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.0.prize}}</span> VNĐ</b></p>
+                        <p class="dientich">Diện tích: <b>{{j.0.area}}</b></p>
+                        <p class="huong">Hướng: <b>{{j.0.direc}}</b></p>
+                       <p>{{j.0.body|safe|linebreaks|truncatewords:150}} </p><a href="/"></a><a href="/posts/{{j.0.id}}"> xem tiếp</a>
                         <p><br></p>
                     <script>
                           ( function() {
@@ -160,7 +169,7 @@ h5.my-4 {
                          }( document ));
                     </script>
                         <br>
-                    {%endfor%}
+
 
 {%endfor%}
 
@@ -172,10 +181,10 @@ h5.my-4 {
 {% for product, range, nSlides in allProds %}
 
 
-                        {% for j in product|slice:"4:7"%}
+                        {% for j in product|slice:"3:5"%}
 
-                        <p><a href="/posts/{{j.id}}"> {{j.title}}</a></p>
-
+                        <p><a href="/posts/{{j.id}}">Cần {{j.categogy}} {{j.title}}</a></p>
+                        <p>Ngày đăng: {{j.date|date:"d-m-Y"}}</p>
                     <a href="/posts/{{j.id}}"><img id="setting1"  src="{{j.image.url}}" class="img-fluid" alt="Responsive image"></a>
 <!--                        <p>Ngày: {{j.pub_date}}</p>-->
                     <p></p>
@@ -216,7 +225,8 @@ h5.my-4 {
                         <div class="card" style="width:18em;">
                             <a href="/posts/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
                             <div class="card-body">
-                                <h5 class="card-title"><a href="/posts/{{i.id}}"> {{i.title}}</a></h5>
+                                <h5 class="card-title"><a href="/posts/{{i.id}}">Cần {{i.categogy}} {{i.title}}</a></h5>
+                                <p>Ngày đăng: {{i.date|date:"d-m-Y"}}</p>
                                 <h6 class="card-title" ><b class="gia2">Giá: <span class="myDIV">{{i.prize}}</span> VNĐ</b></h6>
                                 <p class="dientich">Diện tích: <b>{{i.area}}</b></p>
                                 <p class="huong">Hướng: <b>{{i.direc}}</b></p>
@@ -252,20 +262,20 @@ h5.my-4 {
 {%block spkm%}
 <h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Sản phẩm hots trong tuần</h5>
 
-{% for product, range, nSlides in allProds %}
+{% for j, range, nSlides in allProds|slice:"1:2" %}
 
 
-                        {% for j in product|slice:"4:5"%}
-                    <p><a href="/posts/{{j.id}}">{{j.title}}</a></p>
 
-                   <a href="/posts/{{j.id}}"> <img id="setting111" src="{{j.image.url}}" class="img-fluid" alt="Responsive image"></a>
-<!--                        <p>Ngày: {{j.pub_date}}</p>-->
-<p></p>
-<p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.price}}</span> VNĐ</b></p>
- <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
-                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
+                    <p><a href="/posts/{{j.id}}">Cần {{j.0.categogy}} {{j.0.title}}</a></p>
+                    <p>Ngày đăng: {{j.0.date|date:"d-m-Y"}}</p>
+                   <a href="/posts/{{j.0.id}}"> <img id="setting111" src="{{j.0.image.url}}" class="img-fluid" alt="Responsive image"></a>
 
-                        {%endfor%}
+                    <p></p>
+                    <p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.0.prize}}</span> VNĐ</b></p>
+                     <p class="dientich">Diện tích: <b>{{j.0.area}}</b></p>
+                                            <p class="huong">Hướng: <b>{{j.0.direc}}</b></p>
+
+
 {%endfor%}
 
 {%endblock%}

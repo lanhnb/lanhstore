@@ -28,10 +28,6 @@ def index(request):
     return render(request, 'pages/home2.html', params)
 
 
-
-
-
-# Create your views here.
 def post(request, myid):
     post = Post.objects.filter(id=myid)
     form = CommentForm()
