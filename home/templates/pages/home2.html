@@ -42,7 +42,7 @@ padding-right: 0;
 }
 #c_cot3 ,#c_cot31 {
     display: inline-block;
-    margin-left:-4px;
+    margin-left:17px;
     width:100%;
     max-height:350px;
     }
@@ -124,6 +124,10 @@ div#breadcrumb a {
     color: #ff5e14;
     font-style: italic;
 }
+.row {
+    margin-left: 5px;
+    margin-right: -2px;
+}
 
 </style>
 {%endblock%}
@@ -149,8 +153,7 @@ div#breadcrumb a {
 
                     <p></p>
                         <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.0.prize}}</span> VNĐ</b></p>
-                        <p class="dientich">Diện tích: <b>{{j.0.area}}</b></p>
-                        <p class="huong">Hướng: <b>{{j.0.direc}}</b></p>
+                       <p class="dientich">Diện tích: <b>{{j.0.area}};</b> Hướng:<b>{{j.0.direc}}</b></p>
                        <p>{{j.0.body|safe|linebreaks|truncatewords:150}} </p><a href="/"></a><a href="/posts/{{j.0.id}}"> xem tiếp</a>
                         <p><br></p>
                     <script>
@@ -193,8 +196,7 @@ div#breadcrumb a {
 <!--                        <p>Ngày: {{j.pub_date}}</p>-->
                     <p></p>
                         <p class=""><b class="gia2">Giá: <span class="myDIV">{{j.prize}}</span> VNĐ</b></p>
-                        <p class="dientich">Diện tích: <b>{{j.area}}</b></p>
-                        <p class="huong">Hướng: <b>{{j.direc}}</b></p>
+                        <p class="dientich">Diện tích: <b>{{j.area}};</b> Hướng:<b>{{j.direc}}</b></p>
 <!--                       <p>{{j.body|safe|linebreaks|truncatewords:5}} <a href="/{{post.id}}"> xem tiếp</a> </p>-->
                         <p><br></p>
 
@@ -210,7 +212,7 @@ div#breadcrumb a {
 <html lang="es">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1561521837271142&autoLogAppEvents=1" nonce="4ZrRzg8K"></script>
-<div class="container-fluid">
+
     <!--Slideshow starts here -->
     {% for product, range, nSlides in allProds %}
     <h5 class="my-4"><i class="fas fa-star"></i> Bài viết đăng: {{product.0.categogy}}</h5>
@@ -225,20 +227,20 @@ div#breadcrumb a {
             <div class="container-fluid">
                 <div class="carousel-item active">
                     {% for i in product %}
-                    <div id="c_cot3" class="col-xs-6 col-sm-6 col-md-3">
-                        <div class="card" style="width:16em;">
+                    <div id="c_cot3" class="col-xs-12 col-sm-12 col-md-2">
+                        <div class="card" style=""><!--width:16em;-->
                             <a href="/posts/{{i.id}}"><img src='/media/{{i.image}}' class="card-img-top" alt="..."></a>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/posts/{{i.id}}">Cần {{i.categogy}} {{i.title}}</a></h5>
                                 <p>Ngày đăng: {{i.date|date:"d-m-Y"}}</p>
                                 <h6 class="card-title" ><b class="gia2">Giá: <span class="myDIV">{{i.prize}}</span> VNĐ</b></h6>
-                                <p class="dientich">Diện tích: <b>{{i.area}}</b></p>
-                                <p class="huong">Hướng: <b>{{i.direc}}</b></p>
+                                <p class="dientich">Diện tích: <b>{{i.area}};</b> Hướng:<b>{{i.direc}}</b></p>
+
 
                             </div>
                         </div>
                     </div>
-                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                    {% if forloop.counter|divisibleby:5 and forloop.counter > 0 and not forloop.last %}
                 </div>
                 <div class="carousel-item">
                     {% endif %}
@@ -255,7 +257,7 @@ div#breadcrumb a {
         </a>
     </div>
     {% endfor %}
-</div>
+
 {% endblock %}
 
 
@@ -266,18 +268,17 @@ div#breadcrumb a {
 {%block spkm%}
 <h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Sản phẩm hots trong tuần</h5>
 
-{% for j, range, nSlides in allProds|slice:"3:4" %}
+{% for j, range, nSlides in allProds %}
 
 
 
-                    <p><a href="/posts/{{j.id}}">Cần {{j.0.categogy}} {{j.0.title}}</a></p>
-                    <p>Ngày đăng: {{j.0.date|date:"d-m-Y"}}</p>
-                   <a href="/posts/{{j.0.id}}"> <img id="setting111" src="{{j.0.image.url}}" class="img-fluid" alt="Responsive image"></a>
+                    <p><a href="/posts/{{j.4.id}}">Cần {{j.4.categogy}} {{j.4.title}}</a></p>
+                    <p>Ngày đăng: {{j.4.date|date:"d-m-Y"}}</p>
+                   <a href="/posts/{{j.4.id}}"> <img id="setting111" src="{{j.0.image.url}}" class="img-fluid" alt="Responsive image"></a>
 
                     <p></p>
-                    <p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.0.prize}}</span> VNĐ</b></p>
-                     <p class="dientich">Diện tích: <b>{{j.0.area}}</b></p>
-                                            <p class="huong">Hướng: <b>{{j.0.direc}}</b></p>
+                    <p class="sp_hot"><b class="gia2">Giá: <span class="myDIV">{{j.4.prize}}</span> VNĐ</b></p>
+                     <p class="dientich">Diện tích: <b>{{j.4.area}};</b> Hướng:<b>{{j.4.direc}}</b></p>
 
 
 {%endfor%}
