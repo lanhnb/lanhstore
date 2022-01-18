@@ -5,6 +5,13 @@ $(document).ready(function(){
     $(".search-tt").toggle();
   }));
 });
+$(document).ready(function(){
+  $("#search_icon1").bind("click",(function(){
+    $(".fas.fa-search").css({"font-size": "150%"});
+
+    $(".search-tt").toggle();
+  }));
+});
 
 // When the user scrolls down 20px from the top of the document, slide down the navbar
 window.onscroll = function() {scrollFunction()};

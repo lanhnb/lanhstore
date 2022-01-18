@@ -1,10 +1,11 @@
 {% extends 'pages/base23.html' %}
-{% block title%}{{product.product_name}}
-{%endblock%}
-{% block productView %}
-{% load static %}
-{%block css%}
-<style xmlns="http://www.w3.org/1999/html">
+{% block title%}{{product.product_name}}{%endblock%}
+{%block css %}
+<style>
+html, body{
+    height:100%
+    background-color: #f6f6f6
+}
 .btn-primary {
   background-color: #ff5e14;
 }
@@ -16,13 +17,15 @@
     transition: width 1s, height 2s;
     width:100%;
     height:auto;}
-    
+
 #img_prdV:hover{opacity: 0.8; width: 110%; height: 110%;
 }
 button#popcart {
-    background-color: crimson;
-    padding:16px;
-    margin-top:2px;
+    background-color: #f5f5f5;
+    padding: 13px;
+    margin-top: 8px;
+    color: red;
+    font-weight: 800;
 }
 .popover-body {
     background: yellow;
@@ -38,11 +41,11 @@ li#hb2{
 li#hb3{
     margin-top: 4px;
 }
- 
+
 li#hb4{
     margin-top: 4px;
 }
- 
+
 
 li#hb5{
     margin-top: 4px;
@@ -50,18 +53,184 @@ li#hb5{
 #breadcrumb li {
     display: inline;
 }
+div#breadcrumb {
+    margin-top: 16px;
+}
 .sp_nut {
-    margin-top: 20px;
+    margin-top: 20px;}
 
-    /* left: 234px;}
+   
 .container-fluid {
     margin: 0px;
     padding: 0px;
 }
+#search_icon1:active{background-color:background-color: #f5f5f5;}
 
+a#search_icon1:hover{
+color:var(--overlay-color);
+font-size:16px;
+margin-top:-3px;}
+
+a#search_icon1 {
+    background: #f5f5f5;
+    font-family: 'FontAwesome';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+.mySlides img {
+    box-shadow: 0.2em 0.2em 0.2em rgba( 0, 0, 0, 0.3 );
+    border-radius: 5px;
+}
+img.demo.cursor {
+    border-radius: 2px;
+}
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -6px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color:;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 40px;
+}
+.thanh {
+    top: 50px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.thanh .next {
+    right: 12px;
+    border-radius: 3px 0 0 3px;
+}
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #ff5e14;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+.char111 {
+    margin-top: 46px;
+}
+.imglist {
+    margin-top: 5px;
+    /* padding-bottom: 22px; */
+}
+.readmore {
+    background-color: #f5f5f5;
+}
+#more {display: none;}
+
+a#b9 {
+    margin-top: 2px;
+    padding-bottom: 18px;
+}
+
+#hb1 #hb2 #hb3 #hb4 #hb5{
+    margin-top: 10px;
+}
+a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
+    font-weight: 700;
+}
+
+
+i.fas.fa-star {
+    padding: 5px;
+    font-family: 'FontAwesome';
+    font-size: 15px;
+}
+h5.my-4 {
+    background: #ff5e14;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: #fff;
+}
+#b9 i.fas.fa-user {
+    font-family: 'FontAwesome';
+    font-size: 26px;
+    padding: 5px 13px 5px 12px;
+}
+#hb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+}
+#hb5 i.fas.fa-search:hover{color:#fff;}
+.bread a {
+    font-style: italic;
+    color: #ff5e14;
+}
 </style>
-{%endblock%}
+{%endblock %}
 
+{% load static %}
+{% block productView %}
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1561521837271142&autoLogAppEvents=1" nonce="7jeisJKo"></script>
@@ -72,7 +241,6 @@ li#hb5{
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 align-items-center">
-            <div class="row ">
                 <div id="breadcrumb">
                     <div class="container">
                         <ul class="bread">
@@ -84,8 +252,108 @@ li#hb5{
                     </div>
                 </div>
 
-                <img class="setting1" id="image" src="/media/{{product.image}}" width="233px" height="385px">
-            </div>
+<!--                list anh-->
+                 <!-- Full-width images with number text -->
+              <div class="mySlides" style="width:100%">
+                <div class="numbertext">1 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <div class="mySlides" style="width:100%" >
+                <div class="numbertext" >2 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <div class="mySlides" style="width:100%">
+                <div class="numbertext">3 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <div class="mySlides" style="width:100%">
+                <div class="numbertext">4 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <div class="mySlides" style="width:100%">
+                <div class="numbertext">5 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <div class="mySlides" style="width:100%">
+                <div class="numbertext">6 / 6</div>
+                  <img src="/media/{{product.image}}" style="width:100%">
+              </div>
+
+              <!-- Next and previous buttons -->
+              <div class="thanh">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>
+              <!-- Image text -->
+              <div class="caption-container">
+                <p id="caption"></p>
+              </div>
+
+              <!-- Thumbnail images -->
+                <div class="imglist">
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+
+                <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                </div>
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+                  <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                </div>
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+                  <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                </div>
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+                  <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                </div>
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+                  <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+                </div>
+                <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+                  <img class="demo cursor" src="/media/{{product.image}}" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+                </div>
+              </div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+
+</script>
+<!--End list anh-->
+
+
 
             <div class="row">
                 <div class="sp_nut">
@@ -102,7 +370,6 @@ li#hb5{
         </div>
 
 
-
         <div style="text-align: justify;" class="col-md-6">
             <h2>{{product.product_name}}</h2>
             <p><b class="gia2">Giá: <span class="myDIV"> {{product.price}} </span> VNĐ</b></p>
@@ -114,7 +381,12 @@ li#hb5{
         </div>
     </div>
 </div>
-<div style="text-align: justify;" class="col-md-12">
+<div class="readmore">
+<span id="dots">Xem thêm</span>
+<button onclick="myFunction()" id="myBtn">Mở rộng</button>
+</div>
+
+<div id="more" style="text-align: justify; display:none;"  class="col-md-12">
                {{product.desc|safe|linebreaks}}
 
 </div>
@@ -161,6 +433,25 @@ document.getElementById('cart').innerHTML = Object.keys(cart).length;
 });
 $('#popcart').popover();
 document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in my shopping cart</h5>');
+
+<!--read more-->
+function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Mở rộng";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Thu gọn";
+    moreText.style.display = "inline";
+  }
+}
+<!--End read more-->
+
 </script>
 
 

@@ -1,10 +1,405 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Oswald|Raleway|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{% static 'vendor/bootstrap.js'%}"></script>
+    <script type="text/javascript" src="{% static 'vendor/angular.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static '1.js'%}"></script>
+<!--    <script src="{% static 'js/jquery-1.7.1.min.js'%}"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap.css'%}">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        html, body{
+        height:100%
+        background-color: #f6f6f6
+
+        }
+        #hb1 #hb2 #hb3 #hb4 #hb5{
+    margin-top: 10px;
+}
+a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
+    font-weight: 700;
+}
+#b9{
+    margin-top: -1px;
+    padding-top: 12px;
+}
+.chinhsach h4 {
+    font-weight: 700;
+}
+
+.chinhsach ul {
+    font-weight: 400;
+    color: #393742;
+}
+
+.chinhsach a {
+    color: #313538;
+}
+
+.chinhsach {
+    margin-left: 58px;
+}
+i.fas.fa-star {
+    padding: 5px;
+    font-family: 'FontAwesome';
+    font-size: 15px;
+}
+h5.my-4 {
+    background: #ff5e14;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: #fff;
+}
+#chinhsach {
+        margin: 10px 15px 0px 14px;
+        text-align: justify;
+        line-height: 35px;
+        font-size: 16px;
+        font-family: sans-serif;
+}
+#chinhsach p{
+margin-right:50px;}
+#chinhsach a {
+    font-weight: 700;
+    font-size: larger;
+}
+#b9 i.fas.fa-user {
+    font-family: 'FontAwesome';
+    font-size: 26px;
+    padding: 5px 13px 5px 12px;
+}
+#hb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+}
+#hb5 i.fas.fa-search:hover{color:#fff;}
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
+}
+#hbb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    color:var(--overlay-color);
+}
+
+#hbb5 .fas.fa-search:hover{color:#fff;}
+.my-4 a {
+    color: #fff;
+}
+.my-4 a {
+    color: #fff;
+}
+a#b9 {
+    margin-top: 2px;
+    padding-bottom: 18px;
+}
+    </style>
+    <style>
+        {% block css %}}
+        {%endblock%}
+    </style>
+
+      <script>
+$(document).ready(function(){
+  $("#char1").mouseenter(function(){
+    $("#ich1").attr("src","{% static 'images/khoa1.png'%}");
+    $("#char1").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
+  });
+  $("#char1").mouseleave(function(){
+    $("#char1").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich1").attr("src","{% static 'images/khoa.png'%}");
+  });
+
+  $("#char2").mouseenter(function(){
+    $("#ich2").attr("src","{% static 'images/char_21.png'%}");
+    $("#char2").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
+  });
+  $("#char2").mouseleave(function(){
+    $("#char2").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich2").attr("src","{% static 'images/char_2.png'%}");
+  });
+
+  $("#char3").mouseenter(function(){
+     $("#ich3").attr("src","{% static 'images/char_31.png'%}");
+    $("#char3").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
+  });
+  $("#char3").mouseleave(function(){
+    $("#char3").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich3").attr("src","{% static 'images/char_3.png'%}");
+  });
+
+$("#char4").mouseenter(function(){
+    $("#ich4").attr("src","{% static 'images/sv2.png'%}");
+    $("#char4").css({"background-color": "#ff5e14", "font-size": "120%", "color": "white"});
+  });
+  $("#char4").mouseleave(function(){
+    $("#char4").css({"background-color": "white", "font-size": "100%","color": "black"});
+    $("#ich4").attr("src","{% static 'images/sv1.png'%}");
+  });
+
+});
+
+</script>
+
+
 </head>
-<body>
-$END$
+<body onload="loadTime()">
+
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <ul class="list">
+                <li id="ico1"><a href="tel:0996288999" class="fa fa-phone" data-toggle="tooltip" data-placement="top" title="Gọi số: 0996288999">  (+84) 996288999</a></li>
+                <li id="ico2"><a href="mailto:lanhnb@gmail.com" class="fal fa-envelope"data-toggle="tooltip" data-placement="top" title="Gửi Email đến chúng tôi"></a></li>
+
+                 <li></li>
+                <li id="ico3"><a href="https://vi-vn.facebook.com/login/" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a></li>
+                <li id="ico4"><a href="https://zalo.me/0996288999" class="far fa-comment" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"></a></li>
+
+
+          </ul>
+       <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+            <a class="navbar-brand" href="#">ĐẦU TƯ MUA SẮM</a>
+            <li id="hbb5" class="li1"> <a id="search_icon1" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+
+             <div class="search-tt" id = "frmsearch" style="display:none;">
+                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
+                            {% csrf_token %}
+                            <div class="form-group">
+                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
+
+                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
+                           </div>
+                          </form>
+                    </div>
+        </div>
+
+        <div id="mySidepanel" class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a id="user" href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i> {{user.username}}</a>
+         <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Nhà đất</a>
+            <a href="/shop"><i class="fas fa-shopping-cart"></i> Mua bán</a>
+           <a href="{% url 'contact' %}"><i class="fa fa-fw fa-envelope"></i> Liên hệ</a>
+            {% if user.username %}
+            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i> Đăng xuất</a>
+             {% else %}
+            <a href="{% url 'register' %}"><i class="fas fa-sign-in"></i> Đăng ký </a>
+            <a href="{% url 'login' %}"><i class="fas fa-sign-in"></i> Đăng nhập</a>
+
+            {% endif %}
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav">
+<!--            <li> <marquee id="marque">Zalo/Facebook/Tel number: 0996288999</marquee></li>-->
+          </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li id="hb2"><a id="bm2" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Mua bán Nhà đất">Nhà đất</a></li>
+                    <li id="hb3"><a id="bm3" class="btn btn-outline-primary" href="/shop" role="button" data-toggle="tooltip" data-placement="top" title="Tới tràng Mua bán sản phẩm">Mua bán</a></li>
+                    <li id="hb4"><a id="bm4" class="btn btn-outline-primary" href="{% url 'contact' %}" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang liên hệ">Liên hệ</a></li>
+                     <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+
+<!--                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>-->
+                      <!--Search-->
+
+                    <!--End Search-->
+
+
+                <li class="dropdown">{% if user.username %}
+                  <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào:<i class="fas fa-user"></i>{{user.username}} </a>
+
+
+                  <ul class="dropdown-menu">
+
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'logout' %}">Đăng xuất</a></li>
+                    {% else %}
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'register' %}">Đăng ký</a></li>
+                    <li class="li1"><a id="b9" class="btn btn-outline-primary" href="{% url 'login' %}">Đăng nhập</a></li>
+                         {% endif %}
+
+                  </ul>
+                </li>
+
+              </ul>
+
+        </div>
+      </div>
+       </div>
+    </nav><!-- /.navbar-collapse -->
+
+
+
+    <div class="row">
+            <div class="container-fluid">
+                <div class="char111">
+               <!-- Char. Item -->
+                <ul class="char">
+                    <li>
+                      <div id="char1" class="col-lg-3 col-xs-6 col-sm-3 col-md-6">
+
+                        <ul class="char1">
+                            <li>
+                                <img id="ich1" src="{% static 'images/khoa.png'%}" alt="">
+                            </li>
+                            <li class="pp">
+                                <p>Bảo mật tuyệt đối</p>
+                            </li>
+                        </ul>
+
+                </div>
+                    </li>
+                     <li>
+
+                <div id="char2" class="col-lg-3 col-xs-6 col-sm-6 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich2" src="{% static 'images/char_2.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                            <p>Cập nhật liên tục</p>
+                        </li>
+
+                    </ul>
+
+                </div>
+                     </li>
+                     <li>
+                         <div id="char3" class="col-lg-3 col-xs-6 col-sm-6 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich3" src="{% static 'images/char_3.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                            <p>Chuyên nghiệp tuyệt đối</p>
+                        </li>
+                    </ul>
+                </div>
+                     </li>
+                     <li>
+                          <!-- Char. Item -->
+                <div id="char4" class="col-lg-3 col-xs-6 col-sm-6 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich4" src="{% static 'images/sv1.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                          <p>Hoàn toàn miễn phí</p>
+                        </li>
+                    </ul>
+                </div>
+                     </li>
+                </ul>
+
+            </div>
+    </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 char_col">
+
+            <div class="container-fluid">
+              {% block content %}  {% endblock%}
+            </div>
+        </div>
+    </div>
+
+
+
+
+   <div class="footer" >
+
+        <div class="container-fluid">
+            <div id="" class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+                <div class="chinhsach">
+                <h4>Chính sách của chúng tôi</h4>
+                <ul>
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+                </div>
+            </div>
+
+            <div id="" class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+                <div class="chinhsach">
+                <h4>Địa chỉ giao dịch</h4>
+                <ul>
+                    <li><a href="#">Số 98 đường 477, Tt Me, Gia Viễn, Ninh Bình</a></li>
+                    <li><a href="tel:0996288999">Mobile: 0996288999</a></li>
+                    <li><a href="mailto:lanhnb@gmail.com">Email: lanhnb@gmail.com</a></li>
+                </ul>
+                </div>
+            </div>
+             <div id="" class="col-lg-4 col-xs-12 col-sm-12 col-md-4">
+                <center>
+                    <a href="tel:0996288999"class="fa fa-phone" id="phone" data-toggle="tooltip" data-placement="top" title="Gọi số: 0996288999"></a>
+                   <a href="https://vi-vn.facebook.com/login/" id="face" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a>
+                    <a href="http://google.com.vn" class="fa fa-google" data-toggle="tooltip" data-placement="top" title="Tới trang Google+"></a>
+                     <a href="https://zalo.me/0996288999" id="zalo" class="far fa-comment" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"></a>
+                   <p>Copyright © Your Website 2021 by Lanhnb</p>
+                <center>
+            </div>
+
+
+
+
+        </div>
+    </div>
+{% block js %}
+
+{% endblock%}
+ <script>
+    /* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script> <script>
+    /* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
 </body>
 </html>

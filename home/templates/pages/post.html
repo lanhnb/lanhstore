@@ -1,19 +1,235 @@
-{% extends 'pages/base.html' %}
+{% extends 'pages/basepost.html' %}
 
 {% block title %}{{post.title}}{% endblock %}
+{% block css %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+.mySlides img {
+    box-shadow: 0.2em 0.2em 0.2em rgba( 0, 0, 0, 0.3 );
+    border-radius: 5px;
+}
+img.demo.cursor {
+    border-radius: 2px;
+}
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -6px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color:;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 18px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 10px;
+}
+.thanh {
+    top: 50px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.thanh .next {
+    right: 12px;
+    border-radius: 3px 0 0 3px;
+}
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #ff5e14;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+.char111 {
+    margin-top: 46px;
+}
+.imglist {
+    margin-top: 5px;
+    /* padding-bottom: 22px; */
+}
+</style>
+{% endblock %}
 
 {% block content %}
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="Wl1PeZzx"></script>
 <div class="container-fluid" style="text-align: justify;">
-<h3><a href="{% url 'post' post.id %}">{{post.title}}</a></h3>
-<img id="image" class="setting1" src="{{post.image.url}}" width="500px" height="300px" alt="">
-<h5><i>Ngày đăng: {{post.date|date:"d-m-Y"}}</i></h5>
-<p class="gia">Giá bán: <b class="gia2"><span class="myDIV"> {{post.prize}}</span> VNĐ </b></p>
-<p class="dientich">Diện tích: <b>{{post.area}}</b></p>
-<p class="huong">Hướng: <b>{{post.direc}}</b></p>
-<div class="fb-like" data-href="http://127.0.0.1:8000/{{post.id}}/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
-{{post.body|safe|linebreaks}}
+  <div class="container-fluid">
+    <h3><a href="{% url 'post' post.id %}">{{post.title}}</a></h3>
+
+    <div id="" class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+      <!-- Full-width images with number text -->
+      <div class="mySlides" style="width:100%">
+        <div class="numbertext">1 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <div class="mySlides" style="width:100%" >
+        <div class="numbertext" >2 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <div class="mySlides" style="width:100%">
+        <div class="numbertext">3 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <div class="mySlides" style="width:100%">
+        <div class="numbertext">4 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <div class="mySlides" style="width:100%">
+        <div class="numbertext">5 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <div class="mySlides" style="width:100%">
+        <div class="numbertext">6 / 6</div>
+          <img src="{{post.image.url}}" style="width:100%">
+      </div>
+
+      <!-- Next and previous buttons -->
+      <div class="thanh">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <!-- Image text -->
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+
+      <!-- Thumbnail images -->
+        <div class="imglist">
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+
+        <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+        </div>
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+          <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+        </div>
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+          <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+        </div>
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+          <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+        </div>
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+          <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+        </div>
+        <div class="col-lg-2 col-xs-2 col-sm-2 col-md-2 char_col">
+          <img class="demo cursor" src="{{post.image.url}}" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+        </div>
+      </div>
+    </div>
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+
+</script>
+
+
+
+  <div class="col-lg-6 col-xs-12 col-sm-12 col-md-6">
+       <!--<img id="image" class="setting1" src="{{post.image.url}}" width="500px" height="300px" alt="">-->
+      <h5><i>Ngày đăng: {{post.date|date:"d-m-Y"}}</i></h5>
+      <p class="gia">Giá bán: <b class="gia2"><span class="myDIV1"> {{post.prize}}</span> VNĐ </b></p>
+      <p class="dientich">Diện tích: <b>{{post.area}}</b></p>
+      <p class="huong">Hướng: <b>{{post.direc}}</b></p>
+      <div class="fb-like" data-href="http://127.0.0.1:8000/{{post.id}}/" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+      {{post.body|safe|linebreaks}}
 
 <script>
   ( function() {
@@ -35,7 +251,7 @@
  }( document ));
 </script>
 
-{% for comment in post.comments.all %}
+      {% for comment in post.comments.all %}
     <h4><strong>{{comment.author}}</strong></h4>
     <h6><p>Thời gian: {{comment.date}}</p></h6>
     <p>Bình luận: {{comment.body|linebreaks}}</p>
@@ -50,17 +266,21 @@
     </form>
 {% endif %}
 </div>
+    </div>
+
+{%endblock%}
+{% block js %}
+
 <script>
     //tach so 1000
-let x = document.querySelectorAll(".myDIV");
+let x = document.querySelectorAll(".myDIV1");
         for (let i = 0, len = x.length; i < len; i++) {
                       .toLocaleString('en');
             x[i].innerHTML = num;
             x[i].classList.add("currSign");
         };
-//Het tach
-            let num = Number(x[i].innerHTML)
-
 </script>
 {% endblock%}
+
+
 

@@ -63,9 +63,19 @@ a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
     font-size: 26px;
     padding: 5px 13px 5px 12px;
 }
+#hbb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    color:var(--overlay-color);
+}
 #hb5 i.fas.fa-search {
     font-family: 'FontAwesome';
     font-size: 20px;
+
+}
+#hbb5 .fas.fa-search:hover{color:#fff;}
+.my-4 a {
+    color: #fff;
 }
 #hb5 i.fas.fa-search:hover{color:#fff;}
     </style>
@@ -134,15 +144,39 @@ $("#char4").mouseenter(function(){
 
 
           </ul>
-        <!-- Brand and toggle get grouped for better mobile display -->
+       <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ĐẦU TƯ MUA SẮM</a>
+
+            <a class="navbar-brand" href="#">ĐẦU TƯ MUA SẮM</a>
+            <li id="hbb5" class="li1"> <a id="search_icon1" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+
+             <div class="search-tt" id = "frmsearch" style="display:none;">
+                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
+                            {% csrf_token %}
+                            <div class="form-group">
+                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
+
+                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
+                           </div>
+                          </form>
+                    </div>
+        </div>
+
+        <div id="mySidepanel" class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a id="user" href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i> {{user.username}}</a>
+         <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Nhà đất</a>
+            <a href="/shop"><i class="fas fa-shopping-cart"></i> Mua bán</a>
+           <a href="{% url 'contact' %}"><i class="fa fa-fw fa-envelope"></i> Liên hệ</a>
+            {% if user.username %}
+            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i> Đăng xuất</a>
+             {% else %}
+            <a href="{% url 'register' %}"><i class="fas fa-sign-in"></i> Đăng ký </a>
+            <a href="{% url 'login' %}"><i class="fas fa-sign-in"></i> Đăng nhập</a>
+
+            {% endif %}
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -152,26 +186,18 @@ $("#char4").mouseenter(function(){
 <!--            <li> <marquee id="marque">Zalo/Facebook/Tel number: 0996288999</marquee></li>-->
           </ul>
 
-               <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
 
                     <li id="hb2"><a id="bm2" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Mua bán Nhà đất">Nhà đất</a></li>
                     <li id="hb3"><a id="bm3" class="btn btn-outline-primary" href="/shop" role="button" data-toggle="tooltip" data-placement="top" title="Tới tràng Mua bán sản phẩm">Mua bán</a></li>
                     <li id="hb4"><a id="bm4" class="btn btn-outline-primary" href="{% url 'contact' %}" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang liên hệ">Liên hệ</a></li>
+                     <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
 
-
-                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+<!--                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>-->
                       <!--Search-->
-                    <div class="search-tt" id = "search" style="display:none;">
-                          <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
-                            {% csrf_token %}
-                            <div class="form-group">
-                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
 
-                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
-                           </div>
-                          </form>
-                    </div>
                     <!--End Search-->
+
 
                 <li class="dropdown">{% if user.username %}
                  <a href="#" id="b9" class="btn btn-outline-primary" data-toggle="dropdown">Xin chào:<i class="fas fa-user"></i>{{user.username}} </a>
@@ -202,6 +228,16 @@ $("#char4").mouseenter(function(){
                     {% block 500 %}
 
                     {% endblock%}
+ <script>
+    /* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
 
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
 </body>
 </html>

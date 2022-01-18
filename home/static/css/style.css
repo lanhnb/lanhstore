@@ -1,9 +1,182 @@
 :root {
     --overlay-color:#ff5e14;
 }
+button.openbtn {
+    margin-top: 48px;
 
+    margin-right: 6px;
+
+}
+ul.topone {
+    display: inline-flex;
+    list-style: none;
+}
+a#user {
+    font-size: 32px;
+
+    margin-top: -51px;
+}
+i.fas.fa-shopping-cart {
+    font-family: 'FontAwesome';
+}
+.sidepanel {
+  height: 350px; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color:var(--overlay-color); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  box-shadow: 0.2em 0.2em 0.2em rgba( 0, 0, 0, 0.3 );
+  border-radius:0 5px 5px 0px;
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color:
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius:5px;
+}
+
+.openbtn:hover {
+  background-color: var(--overlay-color);
+}
+.openbtn {
+  display: none;
+}
+
+.collapse navbar-collapse navbar-ex1-collapse {
+  background-color:#04AA6D;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.collapse navbar-collapse navbar-ex1-collapse {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+/*color: #f2f2f2; mau bac*/
+/* Change the color of links on hover */
+.collapse navbar-collapse navbar-ex1-collapse:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add an active class to highlight the current page
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+*/
+/* Hide the link that should open and close the topnav on small screens */
+.openbtn {
+  display: none;
+}
+.li1{display:none;}
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 600px) {
+  .collapse navbar-collapse navbar-ex1-collapse:not(:first-child) {display: none;}
+  .li1{display:block;}
+  .openbtn{
+    float: right;
+    display: block;
+  }
+ }
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 600px) {
+  .collapse navbar-collapse navbar-ex1-collapse.responsive {position: relative;}
+
+  .openbtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .collapse navbar-collapse navbar-ex1-collapse.responsive {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+li#hbb5 {
+    margin-top: 14px;
+    color:var(--overlay-color);
+        margin-left: -17px;
+}
+ul.topone {
+    display: inline-flex;
+    list-style: none;
+    margin-left: -41px;
+    margin-bottom: -3px;
+}
+
+li.nav-item {
+    margin-left: -21px;
+    margin-top: 3px;
+}
+
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #f5f5f5;
+    border-color: #007bff;
+}
+#search_icon1:active{background-color:background-color: #f5f5f5;}
+
+a#search_icon1:hover{
+color:var(--overlay-color);
+font-size:16px;
+margin-top:-3px;}
+
+a#search_icon1 {
+    background: #f5f5f5;
+    font-family: 'FontAwesome';
+}
+i.fal fa-registered {
+    font-family: 'FontAwesome';
+}
+i.fas.fa-sign-in {
+    font-family: 'FontAwesome';
+}
 a.far.fa-comment {
     color: darkslategrey;
+    font-family: 'FontAwesome';
 }
 a.far.fa-youtube {
     color: darkslategrey;
@@ -135,14 +308,8 @@ ul.list li {
     color:var(--overlay-color);
     }
 
-.service_1 {
-    margin-top: -20px;
-    margin-bottom: 20px;
-}
-.service_base {
-    margin-top: 25px;
-    margin-bottom: 20px;
-}
+
+
 button.btn.btn-default {
     color: #333;
     background-color:var(--overlay-color);
@@ -176,11 +343,23 @@ div#search {
     background: #fff;
     padding: 10px;
 }
-
+.search-tt {
+    position: absolute;
+    width: 320px;
+    right: 65px;
+    z-index: 2;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 6px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 1px 6px 0 rgb(0 0 0 / 30%);
+    display: none;
+    top: calc(100% + 10px);
+    background: #fff;
+    padding: 5px;
+}
 div#frmsearch {
     position: absolute;
     width: 327px;
-    right: 327px;
+    right: 18px;
     z-index: 2;
     border-radius: 3px;
     -webkit-box-shadow: 0 1px 6px 0 rgb(0 0 0 / 30%);
@@ -238,19 +417,7 @@ input#search{
     margin-right: -15px;
     margin-bottom: 5px;}
 
-.search-tt {
-    position: absolute;
-    width: 320px;
-    right: 65px;
-    z-index: 2;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 1px 6px 0 rgb(0 0 0 / 30%);
-    box-shadow: 0 1px 6px 0 rgb(0 0 0 / 30%);
-    display: none;
-    top: calc(100% + 10px);
-    background: #fff;
-    padding: 5px;
-}
+
 i#fa1{
     font-family: 'FontAwesome';
     font-size:large;
@@ -396,19 +563,37 @@ textarea#id_body {
 .characteristics {
     margin-top: 50px;
 }
-.char_icon {
-    padding-right: 10px;
+
+
+
+
+ul.char1 {
+    list-style: none;
+    display: inline;
 }
-.char_icon4{padding-right: 10px;}
-.char_item {
-    width: 100%;
-    height: 100px;
-    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
-    border: solid 1px #e8e8e8; 
-    padding-left: 6px;
-    }
-.col-lg-3.col-md-6.char_col {
-    margin-top: 30px;
+#char1, #char2, #char3, #char4{
+box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+    border: solid 1px #e8e8e8;
+    border-radius:5px;
+    margin-left:0px;
+    position: relative;
+    height:50px;
+}
+
+ul.char {
+    display: inline;
+    list-style: none;
+}
+
+
+img#ich2{margin-left:20px; margin-top:-18px;}
+img#ich3{margin-left:20px; margin-top:-18px;}
+img#ich1{margin-left:20px; margin-top:-18px;}
+img#ich4{margin-left:20px; margin-top:-18px;}
+
+.pp p {
+    margin-top: -30px;
+    margin-left: 65px;
 }
 
 /*Slider_bar*/
@@ -516,89 +701,72 @@ span.glyphicon.glyphicon-chevron-right {
 }
 
 a.fa.fa-google:hover {
-     background:var(--overlay-color);
-    color: white;
+
+    color: var(--overlay-color);
 }
 #face:hover {
-     background: var(--overlay-color);
-    color: white;
+      color: var(--overlay-color);
 }
 #phone:hover {
-     background: var(--overlay-color);
-    color: white;
+    color: var(--overlay-color);
+}
+#google:hover{
+color: var(--overlay-color);
+}
+a#zalo:hover {
+     color: var(--overlay-color);
 }
 a.fa.fa-google {
-   font-size: 19px;
+   font-size: 20px;
     color: #777;
     padding-bottom: 5px;
-    border: 2px solid gray;
-    border-radius: 50%;
-    font-size: 25px;
-    padding-top: 10px;
-    padding-left: 12px;
-    padding-right: 14px;
-    display: inline-block;
-    margin-right: 4px;
-    margin-left: 4px;
-    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+
+    margin-right: 10px;
+    margin-left: 10px;
+
 }
 
 a#face{
-    font-size: 19px;
+    font-size: 20px;
     color: #777;
     padding-bottom: 5px;
-    border: 2px solid gray;
-    border-radius: 50%;
-    font-size: 25px;
-    padding-top: 10px;
-    padding-left: 12px;
-    padding-right: 14px;
-    display: inline-block;
-    margin-right: 4px;
-    margin-left: 4px;
-    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+
+   margin-right: 10px;
+    margin-left: 10px;
+
 }
 
 
 
 a#phone {
-   font-size: 19px;
+   font-size: 20px;
     color: #777;
     padding-bottom: 5px;
-    border: 2px solid gray;
-    border-radius: 50%;
-    font-size: 25px;
-    padding-top: 10px;
-    padding-left: 12px;
-    padding-right: 14px;
-    display: inline-block;
-    margin-right: 4px;
-    margin-left: 4px;
-    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+
+    margin-right: 10px;
+    margin-left: 10px;
+
 }
-
-
-.footer img {
-    font-size: 19px;
+a#google {
+   font-size: 20px;
     color: #777;
-    padding-bottom: 4px;
-    border: 2px solid gray;
-    border-radius: 50%;
-    font-size: 25px;
-    padding-top: 5px;
-    padding-left: 9px;
-    padding-right: 3px;
-    display: inline-block;
-    margin-right: -23px;
-    margin-left: -6px;
-    margin-top: 0px;
-    margin-bottom: 14px;
-    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+    padding-bottom: 5px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+
 }
-.footer img:hover {
-    background: var(--overlay-color);
-    color: white;
+a#zalo {
+   font-size: 20px;
+    color: #777;
+    padding-bottom: 5px;
+
+   margin-right: 10px;
+    margin-left: 10px;
+
 }
+
+
 .deals_timer_unit {
     color: red;
     padding-left:50px;
@@ -647,6 +815,17 @@ img#setting111 {
     cursor: pointer;
     width: 15em;
  }
+ img#setting22 {
+    #display: block;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0.4em 0.4em 0.4em rgba( 0, 0, 0, 0.3 );
+    transition: 1s ease-in-out;
+    cursor: pointer;
+
+ }
+
 img#setting111:hover{
   opacity: 0.8;  
 }
@@ -674,6 +853,7 @@ img#setting111:hover{
     cursor: pointer;
     width: 69em;
  }
+
 
 #b1{
 
@@ -707,8 +887,8 @@ box-shadow: 0.2em 0.2em 0.2em rgba( 0, 0, 0, 0.3 );}
 
 a.navbar-brand {
 
-margin-top:3px;
-margin-bottom:3px;
+margin-top:17px;
+margin-bottom:-6px;
 font-weight: 700;}
 
 .form-group {
@@ -770,7 +950,7 @@ img.fas.fa-search {
     margin-bottom: : -4px;
 }
 ul.nav.navbar-nav.navbar-right {
-    margin-top: 3px;
+    margin-top: 7px;
     margin-bottom: -8px;
 }
 

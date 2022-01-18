@@ -4,10 +4,7 @@
 .carousel-indicators .active {
 background-color: #ff5e14;
 }
-.col-md-3 img{
-width: 120;px
-height: 200px;
-}
+
 body .carousel-indicator li{
 
 background-color: #ff5e14;
@@ -43,8 +40,7 @@ padding-right: 0;
 #c_cot3 ,#c_cot31 {
     display: inline-block;
 
-    width:100%;
-    max-height:350px;
+
     }
 #c_cot3 img{
     border-radius: 5px;
@@ -253,6 +249,17 @@ div#breadcrumb a {
     {% endfor %}
 
 {% endblock %}
+    {%block video %}
+    <h5 class="my-4"><i class="fas fa-star"></i><i class="fas fa-star"></i> Video trong tuần</h5>
+{% for product, range, nSlides in allProds %}
+        {% for j in product|slice:"3:4"%}
+        {{j.body|safe|linebreaks}}
+
+    {%endfor%}
+
+    {%endfor%}
+
+    {%endblock%}
 
 {% block js %}
 

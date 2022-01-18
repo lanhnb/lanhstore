@@ -32,7 +32,9 @@
         background-color: #f6f6f6
         }
         #hb1 #hb2 #hb3 #hb4 #hb5{
-    margin-top: 10px;
+    margin-top: 10px;}
+    #hb5{
+       list-style: none;
 }
 a#bm1, a#bm2,a#bm3,a#bm4,a#b9 {
     font-weight: 700;
@@ -78,11 +80,17 @@ h5.my-4 {
     font-size: 26px;
     padding: 5px 13px 5px 12px;
 }
+#hbb5 i.fas.fa-search {
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    color:var(--overlay-color);
+}
 #hb5 i.fas.fa-search {
     font-family: 'FontAwesome';
     font-size: 20px;
+
 }
-#hb5 i.fas.fa-search:hover{color:#fff;}
+
 .my-4 a {
     color: #fff;
 }
@@ -98,7 +106,7 @@ h5.my-4 {
 $(document).ready(function(){
   $("#char1").mouseenter(function(){
     $("#ich1").attr("src","{% static 'images/khoa1.png'%}");
-    $("#char1").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+    $("#char1").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
   });
   $("#char1").mouseleave(function(){
     $("#char1").css({"background-color": "white", "font-size": "100%","color": "black"});
@@ -107,7 +115,7 @@ $(document).ready(function(){
 
   $("#char2").mouseenter(function(){
     $("#ich2").attr("src","{% static 'images/char_21.png'%}");
-    $("#char2").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+    $("#char2").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
   });
   $("#char2").mouseleave(function(){
     $("#char2").css({"background-color": "white", "font-size": "100%","color": "black"});
@@ -116,7 +124,7 @@ $(document).ready(function(){
 
   $("#char3").mouseenter(function(){
      $("#ich3").attr("src","{% static 'images/char_31.png'%}");
-    $("#char3").css({"background-color": "#ff5e14", "font-size": "150%","color": "white"});
+    $("#char3").css({"background-color": "#ff5e14", "font-size": "120%","color": "white"});
   });
   $("#char3").mouseleave(function(){
     $("#char3").css({"background-color": "white", "font-size": "100%","color": "black"});
@@ -125,7 +133,7 @@ $(document).ready(function(){
 
 $("#char4").mouseenter(function(){
     $("#ich4").attr("src","{% static 'images/sv2.png'%}");
-    $("#char4").css({"background-color": "#ff5e14", "font-size": "150%", "color": "white"});
+    $("#char4").css({"background-color": "#ff5e14", "font-size": "120%", "color": "white"});
   });
   $("#char4").mouseleave(function(){
     $("#char4").css({"background-color": "white", "font-size": "100%","color": "black"});
@@ -156,13 +164,37 @@ $("#char4").mouseenter(function(){
           </ul>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ĐẦU TƯ MUA SẮM</a>
+
+            <a class="navbar-brand" href="#">ĐẦU TƯ MUA SẮM</a>
+            <li id="hbb5" class="li1"> <a id="search_icon1" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+            <button class="openbtn" onclick="openNav()">&#9776;</button>
+
+             <div class="search-tt" id = "frmsearch" style="display:none;">
+                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
+                            {% csrf_token %}
+                            <div class="form-group">
+                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
+
+                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
+                           </div>
+                          </form>
+                    </div>
+        </div>
+
+        <div id="mySidepanel" class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <a id="user" href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i> {{user.username}}</a>
+         <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Nhà đất</a>
+            <a href="/shop"><i class="fas fa-shopping-cart"></i> Mua bán</a>
+           <a href="{% url 'contact' %}"><i class="fa fa-fw fa-envelope"></i> Liên hệ</a>
+            {% if user.username %}
+            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i> Đăng xuất</a>
+             {% else %}
+            <a href="{% url 'register' %}"><i class="fa fa-registered" aria-hidden="true"></i> Đăng ký </a>
+            <a href="{% url 'login' %}"><i class="fas fa-sign-in"></i> Đăng nhập</a>
+
+            {% endif %}
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -177,20 +209,11 @@ $("#char4").mouseenter(function(){
                     <li id="hb2"><a id="bm2" class="btn btn-outline-primary" href="/" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang Mua bán Nhà đất">Nhà đất</a></li>
                     <li id="hb3"><a id="bm3" class="btn btn-outline-primary" href="/shop" role="button" data-toggle="tooltip" data-placement="top" title="Tới tràng Mua bán sản phẩm">Mua bán</a></li>
                     <li id="hb4"><a id="bm4" class="btn btn-outline-primary" href="{% url 'contact' %}" role="button" data-toggle="tooltip" data-placement="top" title="Tới trang liên hệ">Liên hệ</a></li>
+                     <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
 
-
-                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>
+<!--                <li id="hb5" class="li1"> <a id="search_icon" class="btn btn-outline-primary" href="#" ><i class="fas fa-search" data-toggle="tooltip" data-placement="top" title="Tìm theo Tên, Giá và Hướng"></i></a></li>-->
                       <!--Search-->
-                    <div class="search-tt" id = "frmsearch" style="display:none;">
-                           <form action="{% url 'search:searchposts' %}" class="navbar-form navbar-left" method="GET" name="q" value ="{{request.GET.q}}" target="_blank" role="search">
-                            {% csrf_token %}
-                            <div class="form-group">
-                              <input autocomplete="on" class="form-control search" name="q" value ="{{request.GET.q}}" id="title" placeholder="Cần tìm" required="required"  type="text" onkeydown="color('yellow')" onkeyup="color('white')">
 
-                            <button id="fa" type="submit" name="submit"  value="Search" data-toggle="tooltip" data-placement="top" ><i class="fas fa-search" ></i></button>
-                           </div>
-                          </form>
-                    </div>
                     <!--End Search-->
 
                 <li class="dropdown">{% if user.username %}
@@ -281,62 +304,70 @@ $("#char4").mouseenter(function(){
     </div>
 
     <div class="row">
-            <div class="service_1">
+            <div class="container-fluid">
+                <div class="char111">
+
                <!-- Char. Item -->
-                <div id="char1" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
+                <div id="char1" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
 
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich1" src="{% static 'images/khoa.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Bảo mật tuyệt đối</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
+                        <ul class="char1">
+                            <li>
+                                <img id="ich1" src="{% static 'images/khoa.png'%}" alt="">
+                            </li>
+                            <li class="pp">
+                                <p>Bảo mật</p>
+                            </li>
+                        </ul>
                 </div>
 
-                <!-- Char. Item -->
-                <div id="char2" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
 
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich2" src="{% static 'images/char_2.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Cập nhật liên tục</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
+                <div id="char2" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich2" src="{% static 'images/char_2.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                            <p>Cập nhật</p>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div id="char3" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich3" src="{% static 'images/char_3.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                            <p>Chuyên nghiệp</p>
+                        </li>
+                    </ul>
+                </div>
+                    <!-- Char. Item -->
+                <div id="char4" class="col-lg-3 col-xs-6 col-sm-3 col-md-3">
+                    <ul class="char1">
+                        <li>
+                            <img id="ich4" src="{% static 'images/sv1.png'%}" alt="">
+                        </li>
+                        <li class="pp">
+                          <p>miễn phí</p>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Char. Item -->
-                <div id="char3" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
 
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich3" src="{% static 'images/char_3.png'%}" alt=""></div>
-                        <div class="char_content">
-                            <div class="char_title">Chuyên nghiệp tuyệt đối</div>
-                            <div class="char_subtitle"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Char. Item -->
-                <div id="char4" class="col-lg-3 col-xs-6 col-sm-3 col-md-6 char_col">
-
-                    <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                        <div class="char_icon"><img id="ich4" src="{% static 'images/sv1.png'%}" alt=""></div>
-                            <div class="char_content">
-                                <div class="char_title">Hoàn toàn miễn phí</div>
-                                <div class="char_subtitle"></div>
-                            </div>
-                    </div>
-                </div>
             </div>
     </div>
+        </div>
 
 
 
 
     <div class="row">
             <div class="col-lg-3 col-xs-12 col-sm-12 col-md-3 char_col">
+                <div class="video">
+                    {%block video %}{%endblock%}
+                </div>
                 <!-- Slide1 -->
                  <div class="sileanh">
 
@@ -541,14 +572,25 @@ $("#char4").mouseenter(function(){
                 <center>
                     <a href="tel:0996288999"class="fa fa-phone" id="phone" data-toggle="tooltip" data-placement="top" title="Gọi số: 0996288999"></a>
                    <a href="https://vi-vn.facebook.com/login/" id="face" class="fa fa-facebook" data-toggle="tooltip" data-placement="top" title="Ghé trang facebook của Chúng tôi"></a>
-                    <a href="http://google.com.vn" class="fa fa-google" data-toggle="tooltip" data-placement="top" title="Tới trang Google+"></a>
-                    <a href="https://zalo.me/0996288999" class="pps-btn-img" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"> <img src="{% static 'images/zalo2.jpg'%}" alt="Liên hệ"></a>
-                   <p>Copyright © Your Website 2018 by Lanhnb</p>
+                    <a href="http://google.com.vn" id="google" class="fa fa-google" data-toggle="tooltip" data-placement="top" title="Tới trang Google+"></a>
+                    <a href="https://zalo.me/0996288999" id="zalo" class="far fa-comment" data-toggle="tooltip" data-placement="top" title="Liên qua Zalo số: 0996288999"></a>
+                   <p>Copyright © Your Website 2021 by Lanhnb</p>
                 <center>
             </div>
 
         </div>
     </div>
+    <script>
+    /* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
 {% block js %}
 
 {% endblock%}
